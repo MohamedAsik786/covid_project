@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>COVID-19 Predictive Analytics</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;background:#0a0e27;color:#e0e6ff;min-height:100vh}
+.navbar{background:#0d1230;border-bottom:1px solid #1e2a5e;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.brand{color:#00d4ff;font-size:1.1rem;font-weight:700}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-btn{background:transparent;border:1px solid #1e2a5e;color:#a0b4d6;padding:6px 12px;border-radius:7px;cursor:pointer;font-size:0.8rem;transition:all .2s}
+.nav-btn:hover,.nav-btn.active{background:#1e2a5e;color:#00d4ff;border-color:#00d4ff}
+.container{padding:20px;max-width:1400px;margin:0 auto;padding-bottom:50px}
+.page-title{font-size:1.3rem;font-weight:700;color:#00d4ff;margin-bottom:16px}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:20px}
+.kpi-card{background:#0d1230;border:1px solid #1e2a5e;border-radius:12px;padding:16px;transition:transform .2s}
+.kpi-card:hover{transform:translateY(-2px);border-color:#00d4ff}
+.kpi-label{font-size:.72rem;color:#7a8cad;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.kpi-value{font-size:1.6rem;font-weight:700}
+.kpi-sub{font-size:.72rem;color:#7a8cad;margin-top:4px}
+.card{background:#0d1230;border:1px solid #1e2a5e;border-radius:12px;padding:18px;margin-bottom:18px}
+.card-title{font-size:.9rem;font-weight:600;color:#a0c4ff;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.full{grid-column:1/-1}
+canvas{max-width:100%}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{text-align:left;padding:9px 12px;background:#111730;color:#7a8cad;font-size:.7rem;text-transform:uppercase}
+td{padding:9px 12px;border-bottom:1px solid #1a2240}
+tr:hover td{background:#111730}
+.rbadge{padding:2px 8px;border-radius:10px;font-size:.68rem;font-weight:700}
+.rc{background:#8e44ad22;color:#bf5fff;border:1px solid #8e44ad}
+.rh{background:#e74c3c22;color:#ff6b6b;border:1px solid #e74c3c}
+.rm{background:#f39c1222;color:#ffa502;border:1px solid #f39c12}
+.rl{background:#27ae6022;color:#2ed573;border:1px solid #27ae60}
+.pbar{background:#1a2240;border-radius:6px;height:6px;overflow:hidden;margin-top:3px}
+.pfill{height:100%;border-radius:6px}
+.alert-item{padding:12px 14px;border-radius:10px;border-left:4px solid;margin-bottom:8px}
+.a-CRITICAL{border-color:#8e44ad;background:#1a0a2e}
+.a-HIGH{border-color:#e74c3c;background:#1e0a0a}
+.a-MEDIUM{border-color:#f39c12;background:#1e1600}
+.a-LOW{border-color:#27ae60;background:#0a1e10}
+.at{font-weight:600;font-size:.86rem;margin-bottom:3px}
+.am{font-size:.77rem;color:#a0b4d6}
+.ameta{font-size:.68rem;color:#5a6a8a;margin-top:4px}
+.badge{display:inline-block;padding:2px 7px;border-radius:10px;font-size:.67rem;font-weight:700;margin-right:5px;color:#fff}
+.bc{background:#8e44ad}.bh{background:#e74c3c}.bm{background:#f39c12;color:#111}.bl{background:#27ae60}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.filt-btn{padding:6px 13px;border-radius:7px;cursor:pointer;font-size:.8rem;border:1px solid #1e2a5e;background:#0d1230;color:#a0b4d6;transition:all .2s}
+.status-bar{position:fixed;bottom:0;left:0;right:0;background:#0d1230;border-top:1px solid #1e2a5e;padding:5px 18px;font-size:.72rem;color:#5a6a8a;display:flex;gap:18px;align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:4px}
+.dg{background:#27ae60}.dy{background:#f39c12}
+select{background:#0d1230;border:1px solid #1e2a5e;color:#e0e6ff;padding:6px 10px;border-radius:7px;font-size:.8rem;margin-bottom:14px}
+#loading{position:fixed;inset:0;background:#0a0e27;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#00d4ff;z-index:999}
+</style>
+</head>
+<body>
+<div id="loading">Loading COVID Analytics Platform...</div>
+
+<nav class="navbar">
+  <div class="brand">COVID-19 Predictive Analytics</div>
+  <div class="nav-links" id="navLinks"></div>
+</nav>
+<div class="container" id="app"></div>
+<div class="status-bar">
+  <span><span class="dot" id="statusDot"></span><span id="statusText">Checking backend...</span></span>
+  <span>Datasets: 3,600 rows | 10 Indian States + 5 International | 2020–2023</span>
+</div>
+
+<script>
+// ─── API ───────────────────────────────────────────────────────────────────
+const BASE = '';  // same-origin — Flask serves both API and HTML
+
+async function api(path, opts) {
+  try {
+    const r = await fetch(BASE + path, opts);
+    return await r.json();
+  } catch(e) { return null; }
+}
+
+// ─── Mock data ─────────────────────────────────────────────────────────────
+function makeCases() {
+  const rows = [];
+  const start = new Date('2020-03-01');
+  for (let i = 0; i < 150; i++) {
+    const d = new Date(start); d.setDate(d.getDate() + i * 8);
+    const t = i / 149;
+    const w1 = 50000 * Math.exp(-Math.pow(t - 0.25, 2) / 0.01);
+    const w2 = 120000 * Math.exp(-Math.pow(t - 0.55, 2) / 0.008);
+    const w3 = 80000 * Math.exp(-Math.pow(t - 0.78, 2) / 0.006);
+    const cases = Math.max(500, w1 + w2 + w3 + (Math.random() - 0.5) * 5000);
+    rows.push({
+      date: d.toISOString().slice(0,10),
+      new_cases_daily: Math.round(cases),
+      rolling_7day_avg: Math.round(cases * 0.94),
+      deaths: Math.round(cases * 0.018),
+      confirmed_cases: Math.round(cases * 120),
+      growth_rate: (Math.random() - 0.4) * 0.3
+    });
+  }
+  return rows;
+}
+
+function makePreds() {
+  const rows = [];
+  const start = new Date(); start.setDate(start.getDate() + 1);
+  let base = 12000;
+  for (let i = 0; i < 30; i++) {
+    const d = new Date(start); d.setDate(d.getDate() + i);
+    base = Math.max(500, base + (Math.random() - 0.52) * 800);
+    rows.push({
+      date: d.toISOString().slice(0,10),
+      predicted_cases: Math.round(base),
+      lower_bound: Math.round(base * 0.80),
+      upper_bound: Math.round(base * 1.20),
+      day: i + 1
+    });
+  }
+  return rows;
+}
+
+const MOCK = {
+  dashboard: {
+    stats: {
+      total_confirmed: 79963459, total_deaths: 1788970, total_recovered: 72941896,
+      total_active: 5232913, india_confirmed: 44690000, india_deaths: 530779,
+      avg_cfr: 2.25, avg_recovery_rate: 91.1, total_patients: 800,
+      icu_admissions: 187, total_vaccinated: 984307439
+    },
+    alert_summary: { total: 30, by_level: { CRITICAL: 4, HIGH: 10, MEDIUM: 12, LOW: 4 } },
+    top_risk_states: [
+      {state:'Maharashtra',risk_score:82,risk_level:'CRITICAL',avg_new_cases:41200,avg_cfr:2.1},
+      {state:'Delhi',risk_score:74,risk_level:'HIGH',avg_new_cases:28000,avg_cfr:1.9},
+      {state:'Karnataka',risk_score:61,risk_level:'HIGH',avg_new_cases:19500,avg_cfr:1.5},
+      {state:'Tamil Nadu',risk_score:48,risk_level:'MEDIUM',avg_new_cases:14200,avg_cfr:1.3},
+      {state:'Kerala',risk_score:35,risk_level:'MEDIUM',avg_new_cases:9800,avg_cfr:1.1},
+    ]
+  },
+  cases: makeCases(),
+  predictions: { predictions: makePreds(), model: 'Polynomial Regression (degree-3)', confidence: '80%' },
+  alerts: {
+    data: [
+      {id:'A1',level:'CRITICAL',title:'Case Surge in Maharashtra',message:'Avg daily cases: 214,000 - Immediate intervention required!',region:'Maharashtra',metric:'daily_cases',value:214000,timestamp:'2021-05-05 08:00'},
+      {id:'A2',level:'CRITICAL',title:'Hospital Near Capacity: AIIMS Delhi',message:'AIIMS Delhi at 97% bed occupancy in Delhi.',region:'Delhi',metric:'bed_occupancy',value:97,timestamp:'2021-05-05 08:01'},
+      {id:'A3',level:'HIGH',title:'High Case Load in Delhi',message:'Avg daily cases: 28,000 - Enhanced monitoring needed.',region:'Delhi',metric:'daily_cases',value:28000,timestamp:'2021-05-05 08:02'},
+      {id:'A4',level:'HIGH',title:'High Case Load in Karnataka',message:'Avg daily cases: 19,500 - Enhanced monitoring needed.',region:'Karnataka',metric:'daily_cases',value:19500,timestamp:'2021-05-05 08:03'},
+      {id:'A5',level:'HIGH',title:'High Fatality Rate in West Bengal',message:'CFR: 2.7% - Healthcare capacity review needed.',region:'West Bengal',metric:'case_fatality_rate',value:2.7,timestamp:'2021-05-05 08:04'},
+      {id:'A6',level:'MEDIUM',title:'Rapid Growth in Tamil Nadu',message:'7-day growth rate: 52% - Potential outbreak forming.',region:'Tamil Nadu',metric:'growth_rate',value:52,timestamp:'2021-05-05 08:05'},
+      {id:'A7',level:'MEDIUM',title:'Low Vaccination: Uttar Pradesh',message:'Vaccination below 50% of national median.',region:'UP',metric:'vaccination',value:45,timestamp:'2021-05-05 08:06'},
+      {id:'A8',level:'LOW',title:'Stable Trend in Kerala',message:'New cases declining. Monitoring recommended.',region:'Kerala',metric:'daily_cases',value:1200,timestamp:'2021-05-05 08:07'},
+    ]
+  },
+  hospitals: {
+    data: [
+      {hospital_name:'AIIMS Delhi',state:'Delhi',city:'New Delhi',total_beds:2000,occupied_beds:1940,icu_beds:300,occupied_icu:291,occupancy_rate:0.97,icu_occupancy_rate:0.97,staff_available:380,ppe_stock_days:4},
+      {hospital_name:'KEM Hospital',state:'Maharashtra',city:'Mumbai',total_beds:1800,occupied_beds:1710,icu_beds:250,occupied_icu:242,occupancy_rate:0.95,icu_occupancy_rate:0.97,staff_available:310,ppe_stock_days:3},
+      {hospital_name:'CMC Vellore',state:'Tamil Nadu',city:'Vellore',total_beds:2200,occupied_beds:1540,icu_beds:320,occupied_icu:192,occupancy_rate:0.70,icu_occupancy_rate:0.60,staff_available:510,ppe_stock_days:18},
+      {hospital_name:'Nimhans',state:'Karnataka',city:'Bengaluru',total_beds:1200,occupied_beds:1080,icu_beds:180,occupied_icu:162,occupancy_rate:0.90,icu_occupancy_rate:0.90,staff_available:290,ppe_stock_days:6},
+      {hospital_name:'SGPGI Lucknow',state:'Uttar Pradesh',city:'Lucknow',total_beds:1400,occupied_beds:980,icu_beds:190,occupied_icu:114,occupancy_rate:0.70,icu_occupancy_rate:0.60,staff_available:340,ppe_stock_days:14},
+      {hospital_name:'IPGMER Kolkata',state:'West Bengal',city:'Kolkata',total_beds:1600,occupied_beds:1360,icu_beds:220,occupied_icu:198,occupancy_rate:0.85,icu_occupancy_rate:0.90,staff_available:410,ppe_stock_days:9},
+      {hospital_name:'BJ Medical Ahmedabad',state:'Gujarat',city:'Ahmedabad',total_beds:1100,occupied_beds:770,icu_beds:160,occupied_icu:96,occupancy_rate:0.70,icu_occupancy_rate:0.60,staff_available:280,ppe_stock_days:16},
+      {hospital_name:'SMS Hospital',state:'Rajasthan',city:'Jaipur',total_beds:1300,occupied_beds:910,icu_beds:175,occupied_icu:105,occupancy_rate:0.70,icu_occupancy_rate:0.60,staff_available:320,ppe_stock_days:12},
+    ]
+  },
+  vaccination: {
+    data: {
+      total_vaccinated:984307439,first_dose:920000000,second_dose:820000000,booster_dose:210000000,adverse_reactions:294092,
+      by_brand:{Covishield:520000000,Covaxin:330000000,Pfizer:80000000,Moderna:34000000,'Sputnik V':20307439},
+      by_age:{'18-29':210000000,'30-44':275000000,'45-59':245000000,'60-74':190000000,'75+':64307439},
+      timeline: (()=>{const a=[];const s=new Date('2021-01-16');for(let i=0;i<30;i++){const d=new Date(s);d.setDate(d.getDate()+i*30);a.push({date:d.toISOString().slice(0,10),total_vaccinated:Math.round(i*35000000)});}return a;})()
+    }
+  },
+  risk: {
+    data: [
+      {state:'Maharashtra',risk_score:82,risk_level:'CRITICAL',avg_new_cases:41200,avg_cfr:2.1},
+      {state:'Delhi',risk_score:74,risk_level:'HIGH',avg_new_cases:28000,avg_cfr:1.9},
+      {state:'West Bengal',risk_score:65,risk_level:'HIGH',avg_new_cases:22000,avg_cfr:2.7},
+      {state:'Karnataka',risk_score:61,risk_level:'HIGH',avg_new_cases:19500,avg_cfr:1.5},
+      {state:'Tamil Nadu',risk_score:48,risk_level:'MEDIUM',avg_new_cases:14200,avg_cfr:1.3},
+      {state:'Uttar Pradesh',risk_score:44,risk_level:'MEDIUM',avg_new_cases:12500,avg_cfr:1.2},
+      {state:'Kerala',risk_score:35,risk_level:'MEDIUM',avg_new_cases:9800,avg_cfr:1.1},
+      {state:'Gujarat',risk_score:29,risk_level:'LOW',avg_new_cases:7200,avg_cfr:0.9},
+      {state:'Rajasthan',risk_score:22,risk_level:'LOW',avg_new_cases:5400,avg_cfr:0.8},
+      {state:'Madhya Pradesh',risk_score:38,risk_level:'MEDIUM',avg_new_cases:10100,avg_cfr:1.15},
+    ]
+  }
+};
+
+// ─── Utils ─────────────────────────────────────────────────────────────────
+const fmt = n => {
+  if (n == null) return '0';
+  n = Number(n);
+  if (n >= 1e7) return (n/1e7).toFixed(1)+' Cr';
+  if (n >= 1e5) return (n/1e5).toFixed(1)+' L';
+  if (n >= 1e3) return (n/1e3).toFixed(1)+'K';
+  return n.toLocaleString();
+};
+
+const riskClass = lvl => ({CRITICAL:'rc',HIGH:'rh',MEDIUM:'rm',LOW:'rl'}[lvl]||'rl');
+const riskColor = lvl => ({CRITICAL:'#8e44ad',HIGH:'#e74c3c',MEDIUM:'#f39c12',LOW:'#27ae60'}[lvl]||'#00d4ff');
+const alertClass = lvl => 'a-'+lvl;
+const badgeClass = lvl => ({CRITICAL:'bc',HIGH:'bh',MEDIUM:'bm',LOW:'bl'}[lvl]||'bl');
+const occColor = v => v >= 0.95 ? '#8e44ad' : v >= 0.80 ? '#e74c3c' : v >= 0.60 ? '#f39c12' : '#27ae60';
+
+// ─── Mini chart engine (canvas-based, no external lib needed) ──────────────
+function drawAreaChart(canvasId, datasets, labels, height=220) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  canvas.height = height;
+  canvas.width = canvas.parentElement.clientWidth || 600;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const pad = {top:20, right:20, bottom:40, left:60};
+  const cW = W - pad.left - pad.right;
+  const cH = H - pad.top - pad.bottom;
+
+  ctx.clearRect(0, 0, W, H);
+
+  if (!datasets.length || !datasets[0].data.length) return;
+
+  const allVals = datasets.flatMap(d => d.data);
+  const maxVal = Math.max(...allVals) * 1.1 || 1;
+  const minVal = 0;
+
+  const xScale = i => pad.left + (i / (datasets[0].data.length - 1)) * cW;
+  const yScale = v => pad.top + cH - ((v - minVal) / (maxVal - minVal)) * cH;
+
+  // Grid lines
+  ctx.strokeStyle = '#1e2a5e'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.top + (cH / 4) * i;
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + cW, y); ctx.stroke();
+    const val = maxVal - (maxVal / 4) * i;
+    ctx.fillStyle = '#5a6a8a'; ctx.font = '10px Segoe UI'; ctx.textAlign = 'right';
+    ctx.fillText(fmt(val), pad.left - 4, y + 4);
+  }
+
+  // X axis labels (every ~15 points)
+  ctx.fillStyle = '#5a6a8a'; ctx.textAlign = 'center'; ctx.font = '10px Segoe UI';
+  const step = Math.max(1, Math.floor(labels.length / 8));
+  for (let i = 0; i < labels.length; i += step) {
+    ctx.fillText(labels[i].slice(2,10), xScale(i), pad.top + cH + 18);
+  }
+
+  // Draw each dataset
+  datasets.forEach(ds => {
+    const data = ds.data;
+    // Area fill
+    const grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + cH);
+    grad.addColorStop(0, ds.color + '55');
+    grad.addColorStop(1, ds.color + '00');
+
+    ctx.beginPath();
+    ctx.moveTo(xScale(0), yScale(data[0]));
+    for (let i = 1; i < data.length; i++) ctx.lineTo(xScale(i), yScale(data[i]));
+    ctx.lineTo(xScale(data.length - 1), pad.top + cH);
+    ctx.lineTo(xScale(0), pad.top + cH);
+    ctx.closePath();
+    ctx.fillStyle = grad; ctx.fill();
+
+    // Line
+    ctx.beginPath();
+    ctx.moveTo(xScale(0), yScale(data[0]));
+    for (let i = 1; i < data.length; i++) ctx.lineTo(xScale(i), yScale(data[i]));
+    ctx.strokeStyle = ds.color; ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round'; ctx.stroke();
+  });
+
+  // Legend
+  let lx = pad.left;
+  datasets.forEach(ds => {
+    ctx.fillStyle = ds.color; ctx.fillRect(lx, 5, 12, 8);
+    ctx.fillStyle = '#a0b4d6'; ctx.font = '10px Segoe UI'; ctx.textAlign = 'left';
+    ctx.fillText(ds.label, lx + 16, 13);
+    lx += ctx.measureText(ds.label).width + 32;
+  });
+}
+
+function drawBarChart(canvasId, labels, values, colors, height=220) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  canvas.height = height;
+  canvas.width = canvas.parentElement.clientWidth || 600;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const pad = {top:20, right:20, bottom:60, left:70};
+  const cW = W - pad.left - pad.right;
+  const cH = H - pad.top - pad.bottom;
+
+  ctx.clearRect(0, 0, W, H);
+  const maxVal = Math.max(...values) * 1.1 || 1;
+  const barW = Math.max(8, (cW / labels.length) * 0.6);
+  const gap = cW / labels.length;
+
+  // Grid
+  ctx.strokeStyle = '#1e2a5e'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.top + (cH / 4) * i;
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + cW, y); ctx.stroke();
+    ctx.fillStyle = '#5a6a8a'; ctx.font = '10px Segoe UI'; ctx.textAlign = 'right';
+    ctx.fillText(fmt(maxVal - (maxVal / 4) * i), pad.left - 4, y + 4);
+  }
+
+  // Bars
+  labels.forEach((lbl, i) => {
+    const x = pad.left + gap * i + (gap - barW) / 2;
+    const barH = (values[i] / maxVal) * cH;
+    const y = pad.top + cH - barH;
+    const color = Array.isArray(colors) ? (colors[i] || colors[0]) : colors;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.roundRect ? ctx.roundRect(x, y, barW, barH, [4,4,0,0]) : ctx.rect(x, y, barW, barH);
+    ctx.fill();
+    ctx.fillStyle = '#5a6a8a'; ctx.font = '10px Segoe UI'; ctx.textAlign = 'center';
+    ctx.save(); ctx.translate(x + barW/2, pad.top + cH + 14); ctx.rotate(-0.4);
+    ctx.fillText(lbl.slice(0,12), 0, 0); ctx.restore();
+  });
+}
+
+function drawPieChart(canvasId, labels, values, colors, height=220) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+  canvas.height = height;
+  canvas.width = canvas.parentElement.clientWidth || 400;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const total = values.reduce((a,b) => a + b, 0);
+  const cx = W * 0.4, cy = H / 2;
+  const r = Math.min(cx, cy) * 0.75;
+  let startAngle = -Math.PI / 2;
+
+  values.forEach((v, i) => {
+    const slice = (v / total) * 2 * Math.PI;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, startAngle, startAngle + slice);
+    ctx.closePath();
+    ctx.fillStyle = colors[i % colors.length]; ctx.fill();
+    ctx.strokeStyle = '#0a0e27'; ctx.lineWidth = 2; ctx.stroke();
+    startAngle += slice;
+  });
+
+  // Legend
+  const lx = W * 0.82, ly0 = 20;
+  labels.forEach((lbl, i) => {
+    const ly = ly0 + i * 22;
+    ctx.fillStyle = colors[i % colors.length];
+    ctx.fillRect(lx - 45, ly, 12, 12);
+    ctx.fillStyle = '#a0b4d6'; ctx.font = '11px Segoe UI'; ctx.textAlign = 'left';
+    ctx.fillText(lbl.slice(0,12), lx - 30, ly + 11);
+    const pct = ((v/total)*100).toFixed(0)+'%';
+    const v = values[i];
+    ctx.fillStyle = '#5a6a8a';
+    ctx.fillText(pct, lx - 30 + ctx.measureText(lbl.slice(0,12)).width + 4, ly + 11);
+  });
+}
+
+// ─── Page renderers ────────────────────────────────────────────────────────
+
+async function renderDashboard() {
+  let d = await api('/api/dashboard');
+  if (!d || d.status !== 'success') d = MOCK.dashboard;
+  else d = { stats: d.stats, alert_summary: d.alert_summary, top_risk_states: d.top_risk_states };
+
+  const s = d.stats, al = d.alert_summary;
+  const kpis = [
+    ['Total Confirmed', s.total_confirmed, '#00d4ff', `CFR: ${Number(s.avg_cfr).toFixed(2)}%`],
+    ['Total Deaths', s.total_deaths, '#ff4757', `Avg CFR: ${Number(s.avg_cfr).toFixed(2)}%`],
+    ['Total Recovered', s.total_recovered, '#2ed573', `Rate: ${Number(s.avg_recovery_rate).toFixed(1)}%`],
+    ['Active Cases', s.total_active, '#ffa502', 'Currently infected'],
+    ['Total Vaccinated', s.total_vaccinated, '#7bed9f', 'Doses administered'],
+    ['Active Alerts', al.total, '#ff6b81', `Critical:${al.by_level?.CRITICAL||0}  High:${al.by_level?.HIGH||0}`],
+  ];
+
+  const rows = (d.top_risk_states||[]).map(s => `
+    <tr>
+      <td style="font-weight:600">${s.state}</td>
+      <td style="color:#00d4ff;font-weight:700">${s.risk_score}</td>
+      <td><span class="rbadge ${riskClass(s.risk_level)}">${s.risk_level}</span></td>
+      <td>${Math.round(s.avg_new_cases).toLocaleString()}</td>
+      <td>${Number(s.avg_cfr).toFixed(2)}%</td>
+      <td style="width:120px">
+        <div class="pbar"><div class="pfill" style="width:${s.risk_score}%;background:${riskColor(s.risk_level)}"></div></div>
+      </td>
+    </tr>`).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="page-title">COVID-19 Analytics Dashboard</div>
+    <div class="kpi-grid">
+      ${kpis.map(([l,v,c,sub])=>`
+        <div class="kpi-card">
+          <div class="kpi-label">${l}</div>
+          <div class="kpi-value" style="color:${c}">${fmt(v)}</div>
+          <div class="kpi-sub">${sub}</div>
+        </div>`).join('')}
+    </div>
+    <div class="card">
+      <div class="card-title">Top Risk States — Current Status</div>
+      <div style="overflow-x:auto">
+        <table><thead><tr><th>State</th><th>Risk Score</th><th>Level</th><th>Avg Daily Cases</th><th>CFR%</th><th>Risk Meter</th></tr></thead>
+        <tbody>${rows}</tbody></table>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">India Summary</div>
+        <div class="kpi-grid" style="grid-template-columns:1fr 1fr">
+          <div class="kpi-card"><div class="kpi-label">India Confirmed</div><div class="kpi-value" style="color:#00d4ff">${fmt(s.india_confirmed)}</div></div>
+          <div class="kpi-card"><div class="kpi-label">India Deaths</div><div class="kpi-value" style="color:#ff4757">${fmt(s.india_deaths)}</div></div>
+          <div class="kpi-card"><div class="kpi-label">ICU Admissions</div><div class="kpi-value" style="color:#ffa502">${fmt(s.icu_admissions)}</div></div>
+          <div class="kpi-card"><div class="kpi-label">Patients Tracked</div><div class="kpi-value" style="color:#7bed9f">${fmt(s.total_patients)}</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Alert Summary</div>
+        ${['CRITICAL','HIGH','MEDIUM','LOW'].map(lvl=>`
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1a2240">
+            <span class="rbadge ${riskClass(lvl)}">${lvl}</span>
+            <div class="pbar" style="flex:1;margin:0 12px">
+              <div class="pfill" style="width:${Math.min(100,(al.by_level?.[lvl]||0)/al.total*100)}%;background:${riskColor(lvl)}"></div>
+            </div>
+            <span style="color:#a0b4d6;font-weight:700;min-width:24px;text-align:right">${al.by_level?.[lvl]||0}</span>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+async function renderCases() {
+  let d = await api('/api/cases?limit=150');
+  const rows = (d && d.data) ? d.data : MOCK.cases;
+
+  document.getElementById('app').innerHTML = `
+    <div class="page-title">COVID-19 Case Trends (2020–2023)</div>
+    <div style="font-size:.78rem;color:#5a6a8a;margin-bottom:14px">Wave 1: Sep 2020 &nbsp;|&nbsp; Wave 2: May 2021 &nbsp;|&nbsp; Wave 3: Jan 2022</div>
+    <div class="card">
+      <div class="card-title">Daily New Cases — Wave Patterns</div>
+      <canvas id="casesChart"></canvas>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="card-title">Daily Deaths Over Time</div>
+      <canvas id="deathsChart" style="margin-top:8px"></canvas>
+    </div>`;
+
+  const labels = rows.map(r=>r.date);
+  drawAreaChart('casesChart', [
+    {label:'Daily Cases', data:rows.map(r=>r.new_cases_daily||0), color:'#00d4ff'},
+    {label:'7-Day Avg',   data:rows.map(r=>r.rolling_7day_avg||0), color:'#ffa502'},
+  ], labels, 260);
+  drawAreaChart('deathsChart', [
+    {label:'Deaths', data:rows.map(r=>r.deaths||0), color:'#ff4757'},
+  ], labels, 180);
+}
+
+async function renderPrediction() {
+  let d = await api('/api/predict');
+  let preds, model;
+  if (d && d.data) { preds = d.data.predictions; model = d.data.model; }
+  else { preds = MOCK.predictions.predictions; model = MOCK.predictions.model; }
+
+  const weekly = [0,1,2,3].map(w => {
+    const s=preds[w*7], e=preds[Math.min(w*7+6,preds.length-1)];
+    if(!s||!e) return '';
+    const avg = Math.round((s.predicted_cases+e.predicted_cases)/2);
+    const trend = e.predicted_cases > s.predicted_cases;
+    return `<tr>
+      <td>Week ${w+1}</td><td>${s.date?.slice(5)} – ${e.date?.slice(5)}</td>
+      <td style="color:#7bed9f;font-weight:600">${avg.toLocaleString()}</td>
+      <td style="color:#5a6a8a">${s.lower_bound?.toLocaleString()}</td>
+      <td style="color:#5a6a8a">${e.upper_bound?.toLocaleString()}</td>
+      <td>${trend?'Rising':'Falling'}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="page-title">30-Day Outbreak Prediction</div>
+    <div style="font-size:.78rem;color:#7a8cad;margin-bottom:14px;background:#0d1230;padding:6px 12px;border-radius:8px;border:1px solid #1e2a5e;display:inline-block">
+      Model: ${model} &nbsp;|&nbsp; Confidence: 80%
+    </div>
+    <div class="card" style="margin-top:14px">
+      <div class="card-title">Predicted Daily Cases — Next 30 Days</div>
+      <canvas id="predChart"></canvas>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="card-title">Weekly Prediction Summary</div>
+      <table><thead><tr><th>Week</th><th>Date Range</th><th>Avg Predicted</th><th>Lower</th><th>Upper</th><th>Trend</th></tr></thead>
+      <tbody>${weekly}</tbody></table>
+    </div>`;
+
+  drawAreaChart('predChart', [
+    {label:'Predicted Cases', data:preds.map(p=>p.predicted_cases||0), color:'#7bed9f'},
+    {label:'Upper CI',        data:preds.map(p=>p.upper_bound||0),     color:'#00d4ff'},
+    {label:'Lower CI',        data:preds.map(p=>p.lower_bound||0),     color:'#a29bfe'},
+  ], preds.map(p=>p.date), 280);
+}
+
+async function renderAlerts() {
+  let d = await api('/api/alerts');
+  const allAlerts = (d && d.data) ? d.data : MOCK.alerts.data;
+  let filter = 'ALL';
+
+  function render(f) {
+    const shown = f === 'ALL' ? allAlerts : allAlerts.filter(a=>a.level===f);
+    const cnt = allAlerts.reduce((a,x)=>{a[x.level]=(a[x.level]||0)+1;return a;},{});
+    const btns = [['ALL','#00d4ff',allAlerts.length],['CRITICAL','#8e44ad',cnt.CRITICAL||0],
+      ['HIGH','#e74c3c',cnt.HIGH||0],['MEDIUM','#f39c12',cnt.MEDIUM||0],['LOW','#27ae60',cnt.LOW||0]];
+
+    document.getElementById('app').innerHTML = `
+      <div class="page-title">Early Warning Alerts</div>
+      <div class="filter-bar">
+        ${btns.map(([lvl,col,count])=>`
+          <button class="filt-btn" onclick="window._alertFilter('${lvl}')"
+            style="${f===lvl?`background:${col}33;border-color:${col};color:${col}`:''}"
+          >${lvl} (${count})</button>`).join('')}
+      </div>
+      ${shown.map(a=>`
+        <div class="alert-item ${alertClass(a.level)}">
+          <div class="at"><span class="badge ${badgeClass(a.level)}">${a.level}</span>${a.title}</div>
+          <div class="am">${a.message}</div>
+          <div class="ameta">${a.region} &nbsp;|&nbsp; ${a.metric}: ${typeof a.value==='number'?a.value.toLocaleString():a.value} &nbsp;|&nbsp; ${a.timestamp}</div>
+        </div>`).join('')}
+      ${shown.length===0?'<div style="text-align:center;padding:40px;color:#5a6a8a">No alerts for this filter.</div>':''}`;
+  }
+
+  window._alertFilter = (f) => { filter = f; render(f); };
+  render(filter);
+}
+
+async function renderHospital() {
+  let d = await api('/api/hospital-capacity');
+  const hospitals = (d && d.data) ? d.data : MOCK.hospitals.data;
+
+  const tableRows = hospitals.map(h=>`
+    <tr>
+      <td style="font-weight:600">${h.hospital_name}</td>
+      <td>${h.state}</td>
+      <td>${Number(h.total_beds).toLocaleString()}</td>
+      <td>
+        <div style="color:${occColor(h.occupancy_rate)};font-size:.76rem">${Math.round(h.occupancy_rate*100)}%</div>
+        <div class="pbar"><div class="pfill" style="width:${h.occupancy_rate*100}%;background:${occColor(h.occupancy_rate)}"></div></div>
+      </td>
+      <td>${h.icu_beds}</td>
+      <td>
+        <div style="color:${occColor(h.icu_occupancy_rate)};font-size:.76rem">${Math.round(h.icu_occupancy_rate*100)}%</div>
+        <div class="pbar"><div class="pfill" style="width:${h.icu_occupancy_rate*100}%;background:${occColor(h.icu_occupancy_rate)}"></div></div>
+      </td>
+      <td style="color:${(h.ppe_stock_days||0)<7?'#ff4757':'#2ed573'}">${h.ppe_stock_days||'—'}</td>
+    </tr>`).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="page-title">Hospital Capacity Monitor</div>
+    <div class="card">
+      <div class="card-title">Bed Occupancy by Hospital</div>
+      <canvas id="hospChart"></canvas>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="card-title">Hospital Capacity Details</div>
+      <div style="overflow-x:auto">
+        <table><thead><tr><th>Hospital</th><th>State</th><th>Total Beds</th><th>Bed Occupancy</th><th>ICU Beds</th><th>ICU Occupancy</th><th>PPE Days</th></tr></thead>
+        <tbody>${tableRows}</tbody></table>
+      </div>
+    </div>`;
+
+  drawBarChart('hospChart',
+    hospitals.map(h=>h.hospital_name.split(' ').slice(0,2).join(' ')),
+    hospitals.map(h=>Math.round(h.occupancy_rate*100)),
+    hospitals.map(h=>occColor(h.occupancy_rate)), 240);
+}
+
+async function renderVaccination() {
+  let d = await api('/api/vaccination');
+  const v = (d && d.data) ? d.data : MOCK.vaccination.data;
+
+  const kpis = [
+    ['Total Vaccinated',v.total_vaccinated,'#7bed9f'],
+    ['1st Dose',v.first_dose,'#00d4ff'],
+    ['2nd Dose',v.second_dose,'#ffa502'],
+    ['Booster',v.booster_dose,'#a29bfe'],
+    ['Adverse Reactions',v.adverse_reactions,'#ff4757'],
+  ];
+
+  document.getElementById('app').innerHTML = `
+    <div class="page-title">Vaccination Tracker</div>
+    <div class="kpi-grid" style="margin-bottom:18px">
+      ${kpis.map(([l,val,c])=>`
+        <div class="kpi-card"><div class="kpi-label">${l}</div><div class="kpi-value" style="color:${c}">${fmt(val)}</div></div>`).join('')}
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Vaccines by Brand</div>
+        <canvas id="brandChart"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-title">Vaccination by Age Group</div>
+        <canvas id="ageChart"></canvas>
+      </div>
+      <div class="card full">
+        <div class="card-title">Vaccination Rollout Timeline</div>
+        <canvas id="vaxTimeline"></canvas>
+      </div>
+    </div>`;
+
+  const COLORS = ['#00d4ff','#7bed9f','#ffa502','#ff4757','#a29bfe','#fd79a8'];
+  const brands = Object.entries(v.by_brand||{});
+  drawPieChart('brandChart', brands.map(b=>b[0]), brands.map(b=>b[1]), COLORS, 240);
+
+  const ages = Object.entries(v.by_age||{});
+  drawBarChart('ageChart', ages.map(a=>a[0]), ages.map(a=>a[1]), COLORS, 220);
+
+  const tl = (v.timeline||[]).slice(0,24);
+  drawAreaChart('vaxTimeline', [
+    {label:'Total Vaccinated', data:tl.map(t=>t.total_vaccinated||0), color:'#7bed9f'}
+  ], tl.map(t=>t.date), 200);
+}
+
+async function renderRisk() {
+  let d = await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'risk_scores'})}).then(r=>r.json()).catch(()=>null);
+  const scores = (d && d.data && d.data.length) ? d.data : MOCK.risk.data;
+  let selected = scores[0];
+
+  function render() {
+    document.getElementById('app').innerHTML = `
+      <div class="page-title">Regional Risk Scores</div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-title">All States — Risk Overview</div>
+          ${scores.map((s,i)=>`
+            <div onclick="window._selRisk(${i})" style="padding:11px 13px;border-radius:10px;cursor:pointer;margin-bottom:8px;
+              background:${selected.state===s.state?'#1e2a5e':'#111730'};
+              border:1px solid ${selected.state===s.state?riskColor(s.risk_level):'#1e2a5e'};transition:all .2s">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+                <span style="font-weight:600">${s.state}</span>
+                <span class="rbadge ${riskClass(s.risk_level)}">${s.risk_level}</span>
+              </div>
+              <div class="pbar"><div class="pfill" style="width:${s.risk_score}%;background:${riskColor(s.risk_level)}"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:.7rem;color:#5a6a8a">
+                <span>Score: ${s.risk_score}</span><span>CFR: ${Number(s.avg_cfr||0).toFixed(2)}%</span>
+              </div>
+            </div>`).join('')}
+        </div>
+        <div>
+          <div class="card">
+            <div class="card-title">${selected.state} — Risk Detail</div>
+            <div style="text-align:center;padding:20px 0">
+              <div style="font-size:4rem;font-weight:900;color:${riskColor(selected.risk_level)}">${selected.risk_score}</div>
+              <div style="color:#a0b4d6;margin-bottom:14px">Risk Score / 100</div>
+              <span class="rbadge ${riskClass(selected.risk_level)}" style="font-size:.85rem;padding:5px 14px">${selected.risk_level} RISK</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
+              <div style="background:#111730;padding:12px;border-radius:8px">
+                <div style="font-size:.7rem;color:#5a6a8a;margin-bottom:4px">Avg Daily Cases</div>
+                <div style="font-weight:700">${Math.round(selected.avg_new_cases||0).toLocaleString()}</div>
+              </div>
+              <div style="background:#111730;padding:12px;border-radius:8px">
+                <div style="font-size:.7rem;color:#5a6a8a;margin-bottom:4px">Case Fatality Rate</div>
+                <div style="font-weight:700">${Number(selected.avg_cfr||0).toFixed(2)}%</div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-title">Risk Distribution — All States</div>
+            <canvas id="riskChart"></canvas>
+          </div>
+        </div>
+      </div>`;
+
+    drawBarChart('riskChart',
+      scores.map(s=>s.state.slice(0,10)),
+      scores.map(s=>s.risk_score),
+      scores.map(s=>riskColor(s.risk_level)), 220);
+  }
+
+  window._selRisk = (i) => { selected = scores[i]; render(); };
+  render();
+}
+
+// ─── Tab routing ───────────────────────────────────────────────────────────
+const TABS = [
+  {id:'dashboard',  label:'Dashboard',   fn:renderDashboard},
+  {id:'cases',      label:'Cases',       fn:renderCases},
+  {id:'prediction', label:'Prediction',  fn:renderPrediction},
+  {id:'alerts',     label:'Alerts',      fn:renderAlerts},
+  {id:'hospital',   label:'Hospital',    fn:renderHospital},
+  {id:'vaccination',label:'Vaccination', fn:renderVaccination},
+  {id:'risk',       label:'Risk Scores', fn:renderRisk},
+];
+
+let currentTab = 'dashboard';
+
+function setTab(id) {
+  currentTab = id;
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === id);
+  });
+  TABS.find(t=>t.id===id)?.fn();
+}
+
+// ─── Boot ──────────────────────────────────────────────────────────────────
+async function boot() {
+  // Build nav
+  document.getElementById('navLinks').innerHTML = TABS.map(t =>
+    `<button class="nav-btn${t.id==='dashboard'?' active':''}" data-tab="${t.id}" onclick="setTab('${t.id}')">${t.label}</button>`
+  ).join('');
+
+  // Check backend
+  const h = await api('/api/health');
+  const dot = document.getElementById('statusDot');
+  const txt = document.getElementById('statusText');
+  if (h && h.status === 'healthy') {
+    dot.className = 'dot dg';
+    txt.textContent = 'Backend: Connected (localhost:5000) — Live data';
+  } else {
+    dot.className = 'dot dy';
+    txt.textContent = 'Backend: Offline — Showing built-in demo data';
+  }
+
+  // Hide loading
+  document.getElementById('loading').style.display = 'none';
+
+  // Render default tab
+  await renderDashboard();
+}
+
+boot();
+</script>
+</body>
+</html>

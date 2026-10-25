@@ -1,0 +1,2 @@
+{"platform":"COVID Predictive Analytics","status":"healthy","version":"1.0.0"}
+HTTP_STATUS:200

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COVID-19 Predictive Analytics</title>
+  <!-- React + ReactDOM from CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- Babel for JSX in browser -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Recharts -->
+  <script src="https://unpkg.com/recharts@2.8.0/umd/Recharts.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #0a0e27; color: #e0e6ff; min-height: 100vh; }
+    .navbar {
+      background: #0d1230; border-bottom: 1px solid #1e2a5e; padding: 0 24px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .navbar-brand { display: flex; align-items: center; gap: 10px; }
+    .navbar-brand h1 { font-size: 1.2rem; color: #00d4ff; font-weight: 700; }
+    .navbar-links { display: flex; gap: 6px; flex-wrap: wrap; }
+    .nav-btn {
+      background: transparent; border: 1px solid #1e2a5e; color: #a0b4d6;
+      padding: 7px 13px; border-radius: 8px; cursor: pointer; font-size: 0.82rem; transition: all 0.2s;
+    }
+    .nav-btn:hover, .nav-btn.active { background: #1e2a5e; color: #00d4ff; border-color: #00d4ff; }
+    .app-container { padding: 24px; max-width: 1400px; margin: 0 auto; }
+    .page-title { font-size: 1.4rem; font-weight: 700; color: #00d4ff; margin-bottom: 20px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 22px; }
+    .kpi-card {
+      background: #0d1230; border: 1px solid #1e2a5e; border-radius: 12px; padding: 18px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .kpi-card:hover { transform: translateY(-2px); border-color: #00d4ff; }
+    .kpi-label { font-size: 0.75rem; color: #7a8cad; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .kpi-value { font-size: 1.7rem; font-weight: 700; }
+    .kpi-sub { font-size: 0.75rem; color: #7a8cad; margin-top: 4px; }
+    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 22px; }
+    .chart-card { background: #0d1230; border: 1px solid #1e2a5e; border-radius: 12px; padding: 20px; }
+    .chart-card.full { grid-column: 1 / -1; }
+    .chart-title { font-size: 0.95rem; font-weight: 600; color: #a0c4ff; margin-bottom: 14px; }
+    .alert-list { display: flex; flex-direction: column; gap: 10px; }
+    .alert-item { padding: 13px 15px; border-radius: 10px; border-left: 4px solid; background: #111730; }
+    .alert-item.CRITICAL { border-color: #8e44ad; background: #1a0a2e; }
+    .alert-item.HIGH     { border-color: #e74c3c; background: #1e0a0a; }
+    .alert-item.MEDIUM   { border-color: #f39c12; background: #1e1600; }
+    .alert-item.LOW      { border-color: #27ae60; background: #0a1e10; }
+    .alert-title-text { font-weight: 600; font-size: 0.88rem; margin-bottom: 4px; }
+    .alert-msg   { font-size: 0.78rem; color: #a0b4d6; }
+    .alert-meta  { font-size: 0.7rem; color: #5a6a8a; margin-top: 5px; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.68rem; font-weight: 700; margin-right: 6px; }
+    .badge-CRITICAL { background: #8e44ad; color: white; }
+    .badge-HIGH     { background: #e74c3c; color: white; }
+    .badge-MEDIUM   { background: #f39c12; color: #111; }
+    .badge-LOW      { background: #27ae60; color: white; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    .data-table th { text-align: left; padding: 9px 13px; background: #111730; color: #7a8cad; font-size: 0.72rem; text-transform: uppercase; }
+    .data-table td { padding: 9px 13px; border-bottom: 1px solid #1a2240; }
+    .data-table tr:hover td { background: #111730; }
+    .risk-badge { padding: 3px 9px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; }
+    .risk-CRITICAL { background: #8e44ad22; color: #bf5fff; border: 1px solid #8e44ad; }
+    .risk-HIGH     { background: #e74c3c22; color: #ff6b6b; border: 1px solid #e74c3c; }
+    .risk-MEDIUM   { background: #f39c1222; color: #ffa502; border: 1px solid #f39c12; }
+    .risk-LOW      { background: #27ae6022; color: #2ed573; border: 1px solid #27ae60; }
+    .progress-bar  { background: #1a2240; border-radius: 8px; height: 7px; overflow: hidden; margin-top: 4px; }
+    .progress-fill { height: 100%; border-radius: 8px; }
+    .loading { text-align: center; padding: 50px; color: #7a8cad; font-size: 1rem; }
+    select, .ctrl-select {
+      background: #0d1230; border: 1px solid #1e2a5e; color: #e0e6ff;
+      padding: 7px 12px; border-radius: 8px; font-size: 0.83rem;
+    }
+    .filter-bar { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; align-items: center; }
+    @media (max-width: 768px) { .charts-grid { grid-template-columns: 1fr; } .navbar-links { display: none; } }
+    .status-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; background: #0d1230;
+      border-top: 1px solid #1e2a5e; padding: 6px 20px; font-size: 0.75rem;
+      color: #5a6a8a; display: flex; gap: 20px;
+    }
+    .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+    .dot-green { background: #27ae60; }
+    .dot-yellow { background: #f39c12; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useCallback } = React;
+const {
+  AreaChart, Area, LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
+  RadarChart, Radar, PolarGrid, PolarAngleAxis,
+  XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ComposedChart
+} = Recharts;
+
+const API = 'http://localhost:5000/api';
+const COLORS = ['#00d4ff','#7bed9f','#ffa502','#ff4757','#a29bfe','#fd79a8'];
+
+// ── helpers ──
+const fmt = n => {
+  if (!n && n !== 0) return '0';
+  if (n >= 1e7) return (n/1e7).toFixed(1)+' Cr';
+  if (n >= 1e5) return (n/1e5).toFixed(1)+' L';
+  if (n >= 1e3) return (n/1e3).toFixed(1)+'K';
+  return n.toLocaleString();
+};
+
+async function apiFetch(path, opts={}) {
+  try {
+    const r = await fetch(API + path, opts);
+    return await r.json();
+  } catch(e) {
+    return null;
+  }
+}
+
+// ── Mock data fallback ──
+const MOCK = {
+  stats: {
+    total_confirmed:44690000, total_deaths:530779, total_recovered:44200000,
+    total_active:3500000, india_confirmed:44690000, india_deaths:530779,
+    avg_cfr:1.8, avg_recovery_rate:92.4, total_patients:800,
+    icu_admissions:187, total_vaccinated:984307439
+  },
+  top_risk: [
+    {state:'Maharashtra',risk_score:82,risk_level:'CRITICAL',avg_new_cases:41200,avg_cfr:2.1},
+    {state:'Delhi',risk_score:74,risk_level:'HIGH',avg_new_cases:28000,avg_cfr:1.9},
+    {state:'Karnataka',risk_score:61,risk_level:'HIGH',avg_new_cases:19500,avg_cfr:1.5},
+    {state:'Tamil Nadu',risk_score:48,risk_level:'MEDIUM',avg_new_cases:14200,avg_cfr:1.3},
+    {state:'Kerala',risk_score:35,risk_level:'MEDIUM',avg_new_cases:9800,avg_cfr:1.1},
+  ],
+  alert_summary:{total:12,by_level:{CRITICAL:2,HIGH:4,MEDIUM:5,LOW:1}},
+  cases: Array.from({length:100},(_,i)=>{
+    const d=new Date('2020-03-01'); d.setDate(d.getDate()+i*12);
+    const w=Math.sin(i/15)*50000+30000+Math.random()*10000;
+    return {date:d.toISOString().slice(0,10),new_cases_daily:Math.max(0,Math.round(w)),
+            deaths:Math.round(w*0.018),rolling_7day_avg:Math.max(0,Math.round(w*0.95))};
+  }),
+  predictions: Array.from({length:30},(_,i)=>{
+    const d=new Date(); d.setDate(d.getDate()+i+1);
+    return {date:d.toISOString().slice(0,10),
+            predicted_cases:Math.round(8000+Math.random()*4000+i*50),
+            lower_bound:Math.round(6500+Math.random()*1500),
+            upper_bound:Math.round(10500+Math.random()*2500),day:i+1};
+  }),
+  alerts:[
+    {id:'A1',level:'CRITICAL',title:'[CRITICAL] Case Surge in Maharashtra',message:'Avg daily: 214,000 - Immediate action required!',region:'Maharashtra',metric:'daily_cases',value:214000,timestamp:'2021-05-05 08:00:00',color:'#8e44ad'},
+    {id:'A2',level:'HIGH',title:'[HIGH] High Case Load in Delhi',message:'Avg daily: 28,000 - Enhanced monitoring needed.',region:'Delhi',metric:'daily_cases',value:28000,timestamp:'2021-05-05 08:01:00',color:'#e74c3c'},
+    {id:'A3',level:'HIGH',title:'[HIGH] Hospital Near Capacity: AIIMS Delhi',message:'AIIMS Delhi at 94% bed occupancy.',region:'Delhi',metric:'bed_occupancy',value:94,timestamp:'2021-05-05 08:02:00',color:'#e74c3c'},
+    {id:'A4',level:'MEDIUM',title:'[MEDIUM] Rapid Growth in Karnataka',message:'7-day growth rate: 52% - Outbreak forming.',region:'Karnataka',metric:'growth_rate',value:52,timestamp:'2021-05-05 08:03:00',color:'#f39c12'},
+    {id:'A5',level:'MEDIUM',title:'[MEDIUM] Low Vaccination: Uttar Pradesh',message:'Below 50% of national median.',region:'UP',metric:'vaccination',value:45,timestamp:'2021-05-05 08:04:00',color:'#f39c12'},
+  ],
+  hospitals:[
+    {hospital_name:'AIIMS Delhi',state:'Delhi',city:'New Delhi',total_beds:2000,occupied_beds:1880,icu_beds:300,occupied_icu:291,occupancy_rate:0.94,icu_occupancy_rate:0.97,staff_available:420,ppe_stock_days:5},
+    {hospital_name:'KEM Hospital',state:'Maharashtra',city:'Mumbai',total_beds:1800,occupied_beds:1620,icu_beds:250,occupied_icu:235,occupancy_rate:0.90,icu_occupancy_rate:0.94,staff_available:380,ppe_stock_days:8},
+    {hospital_name:'CMC Vellore',state:'Tamil Nadu',city:'Vellore',total_beds:2200,occupied_beds:1540,icu_beds:320,occupied_icu:192,occupancy_rate:0.70,icu_occupancy_rate:0.60,staff_available:510,ppe_stock_days:18},
+    {hospital_name:'Nimhans',state:'Karnataka',city:'Bengaluru',total_beds:1200,occupied_beds:1080,icu_beds:180,occupied_icu:162,occupancy_rate:0.90,icu_occupancy_rate:0.90,staff_available:290,ppe_stock_days:7},
+    {hospital_name:'SGPGI',state:'Uttar Pradesh',city:'Lucknow',total_beds:1400,occupied_beds:980,icu_beds:190,occupied_icu:114,occupancy_rate:0.70,icu_occupancy_rate:0.60,staff_available:340,ppe_stock_days:12},
+  ],
+  vax:{
+    total_vaccinated:984307439,first_dose:900000000,second_dose:750000000,booster_dose:200000000,adverse_reactions:294000,
+    by_brand:{Covishield:500000000,Covaxin:350000000,Pfizer:80000000,Moderna:30000000,'Sputnik V':24307439},
+    by_age:{'18-29':220000000,'30-44':280000000,'45-59':240000000,'60-74':180000000,'75+':64307439},
+    timeline: Array.from({length:24},(_,i)=>{
+      const d=new Date('2021-01-16'); d.setMonth(d.getMonth()+i);
+      return {date:d.toISOString().slice(0,10),total_vaccinated:Math.round(i*45000000)};
+    })
+  }
+};
+
+// ═══════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════
+function Dashboard({backendUp}) {
+  const [data, setData] = useState(null);
+  useEffect(()=>{
+    if(backendUp){
+      apiFetch('/dashboard').then(r=>{
+        if(r&&r.status==='success') setData({stats:r.stats,top:r.top_risk_states,alerts:r.alert_summary});
+        else setData({stats:MOCK.stats,top:MOCK.top_risk,alerts:MOCK.alert_summary});
+      });
+    } else {
+      setData({stats:MOCK.stats,top:MOCK.top_risk,alerts:MOCK.alert_summary});
+    }
+  },[backendUp]);
+
+  if(!data) return <div className="loading">Loading dashboard...</div>;
+  const {stats,top,alerts} = data;
+  const kpis=[
+    ['Total Confirmed',stats.total_confirmed,'#00d4ff',`CFR: ${stats.avg_cfr}%`],
+    ['Total Deaths',stats.total_deaths,'#ff4757',`Avg CFR: ${stats.avg_cfr}%`],
+    ['Total Recovered',stats.total_recovered,'#2ed573',`Rate: ${stats.avg_recovery_rate}%`],
+    ['Active Cases',stats.total_active,'#ffa502','Currently infected'],
+    ['Total Vaccinated',stats.total_vaccinated,'#7bed9f','Doses administered'],
+    ['Alerts Active',alerts.total,'#ff6b81',`Critical: ${alerts.by_level?.CRITICAL||0}  High: ${alerts.by_level?.HIGH||0}`],
+  ];
+  return (
+    <div>
+      <div className="page-title">COVID-19 Analytics Dashboard</div>
+      <div className="kpi-grid">
+        {kpis.map(([label,val,color,sub])=>(
+          <div className="kpi-card" key={label}>
+            <div className="kpi-label">{label}</div>
+            <div className="kpi-value" style={{color}}>{fmt(val)}</div>
+            <div className="kpi-sub">{sub}</div>
+          </div>
+        ))}
+      </div>
+      <div className="chart-card">
+        <div className="chart-title">Top Risk States</div>
+        <table className="data-table">
+          <thead><tr><th>State</th><th>Risk Score</th><th>Level</th><th>Avg Daily Cases</th><th>CFR%</th><th>Meter</th></tr></thead>
+          <tbody>
+            {(top||[]).map((s,i)=>(
+              <tr key={i}>
+                <td>{s.state}</td>
+                <td style={{fontWeight:700,color:'#00d4ff'}}>{s.risk_score}</td>
+                <td><span className={`risk-badge risk-${s.risk_level}`}>{s.risk_level}</span></td>
+                <td>{Math.round(s.avg_new_cases).toLocaleString()}</td>
+                <td>{typeof s.avg_cfr==='number'?s.avg_cfr.toFixed(2):s.avg_cfr}%</td>
+                <td style={{width:120}}>
+                  <div className="progress-bar">
+                    <div className="progress-fill" style={{width:`${s.risk_score}%`,
+                      background:s.risk_score>=75?'#8e44ad':s.risk_score>=50?'#e74c3c':'#f39c12'}}/>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════
+// CASES CHART
+// ═══════════════════════════════════════
+function CasesChart({backendUp}) {
+  const [data, setData] = useState([]);
+  useEffect(()=>{
+    const load = async ()=>{
+      if(backendUp){
+        const r = await apiFetch('/cases?limit=150');
+        if(r&&r.data) { setData(r.data); return; }
+      }
+      setData(MOCK.cases);
+    };
+    load();
+  },[backendUp]);
+
+  const f = v=>v>=1e5?`${(v/1e5).toFixed(1)}L`:v>=1e3?`${(v/1e3).toFixed(0)}K`:v;
+  return (
+    <div>
+      <div className="page-title">COVID-19 Case Trends (2020–2023)</div>
+      <div style={{fontSize:'0.8rem',color:'#5a6a8a',marginBottom:14}}>
+        Wave 1: Sep 2020 | Wave 2: May 2021 | Wave 3: Jan 2022
+      </div>
+      <div className="chart-card" style={{marginBottom:18}}>
+        <div className="chart-title">Daily New Cases — Wave Patterns</div>
+        <ResponsiveContainer width="100%" height={300}>
+          <AreaChart data={data}>
+            <defs>
+              <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#00d4ff" stopOpacity={0.35}/>
+                <stop offset="95%" stopColor="#00d4ff" stopOpacity={0}/>
+              </linearGradient>
+              <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#ffa502" stopOpacity={0.3}/>
+                <stop offset="95%" stopColor="#ffa502" stopOpacity={0}/>
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="3 3" stroke="#1e2a5e"/>
+            <XAxis dataKey="date" tick={{fill:'#5a6a8a',fontSize:10}} tickFormatter={d=>d?.slice(2,10)}/>
+            <YAxis tick={{fill:'#5a6a8a',fontSize:10}} tickFormatter={f}/>
+            <Tooltip contentStyle={{background:'#0d1230',border:'1px solid #1e2a5e',borderRadius:8}}
+                     formatter={(v,n)=>[v?.toLocaleString(),n]}/>
+            <Legend wrapperStyle={{color:'#a0b4d6'}}/>
+            <Area type="monotone" dataKey="new_cases_daily" name="Daily Cases" stroke="#00d4ff" fill="url(#cg)" strokeWidth={2} dot={false}/>
+            <Area type="monotone" dataKey="rolling_7day_avg" name="7-Day Avg" stroke="#ffa502" fill="url(#ag)" strokeWidth={2} dot={false}/>
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+      <div className="chart-card">
+        <div className="chart-title">Daily Deaths Over Time</div>
+        <ResponsiveContainer width="100%" height={200}>
+          <AreaChart data={data}>
+            <defs>
+              <linearGradient id="dg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#ff4757" stopOpacity={0.4}/>
+                <stop offset="95%" stopColor="#ff4757" stopOpacity={0}/>
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="3 3" stroke="#1e2a5e"/>
+            <XAxis dataKey="date" tick={{fill:'#5a6a8a',fontSize:10}} tickFormatter={d=>d?.slice(2,10)}/>
+            <YAxis tick={{fill:'#5a6a8a',fontSize:10}} tickFormatter={f}/>
+            <Tooltip contentStyle={{background:'#0d1230',border:'1px solid #1e2a5e',borderRadius:8}}/>
+            <Area type="monotone" dataKey="deaths" name="Deaths" stroke="#ff4757" fill="url(#dg)" strokeWidth={2} dot={false}/>
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════
+// PREDICTION
+// ═══════════════════════════════════════
+function Prediction({backendUp}) {
+  const [data, setData] = useState([]);
+  const [model, setModel] = useState('');
+  useEffect(()=>{
+    const load = async ()=>{
+      if(backendUp){
+        const r = await apiFetch('/predict');
+        if(r&&r.data){ setData(r.data.predictions||[]); setModel(r.data.model||''); return; }
+      }
+      setData(MOCK.predictions); setModel('Mock Linear');
+    };
+    load();
+  },[backendUp]);
+
+  const f = v=>v>=1e5?`${(v/1e5).toFixed(1)}L`:v>=1e3?`${(v/1e3).toFixed(0)}K`:v;
+  return (
+    <div>
+      <div className="page-title">30-Day Outbreak Prediction</div>
+      {model&&<div style={{fontSize:'0.8rem',color:'#7a8cad',marginBottom:14,
+        background:'#0d1230',padding:'6px 12px',borderRadius:8,border:'1px solid #1e2a5e',display:'inline-block'}}>
+        Model: {model} | Confidence: 80%
+      </div>}
+      <div className="chart-card" style={{marginTop:14}}>
+        <div className="chart-title">Predicted Daily Cases — Next 30 Days</div>
+        <ResponsiveContainer width="100%" height={320}>
+          <ComposedChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#1e2a5e"/>
+            <XAxis dataKey="date" tick={{fill:'#5a6a8a',fontSize:10}} tickFormatter={d=>d?.slice(5)}/>
+            <YAxis tick={{fill:'#5a6a8a',fontSize:10}} tickFormatter={f}/>
+            <Tooltip contentStyle={{background:'#0d1230',border:'1px solid #1e2a5e',borderRadius:8}}
+                     formatter={(v,n)=>[v?.toLocaleString(),n]}/>
+            <Legend wrapperStyle={{color:'#a0b4d6'}}/>
+            <Area type="monotone" dataKey="upper_bound" name="Upper CI" stroke="none" fill="#00d4ff22"/>
+            <Area type="monotone" dataKey="lower_bound" name="Lower CI" stroke="none" fill="#0a0e27"/>
+            <Line type="monotone" dataKey="predicted_cases" name="Predicted" stroke="#7bed9f" strokeWidth={3} dot={{r:3,fill:'#7bed9f'}}/>
+            <Line type="monotone" dataKey="upper_bound" name="CI Upper" stroke="#00d4ff" strokeWidth={1} strokeDasharray="4 4" dot={false}/>
+            <Line type="monotone" dataKey="lower_bound" name="CI Lower" stroke="#00d4ff" strokeWidth={1} strokeDasharray="4 4" dot={false}/>
+          </ComposedChart>
+        </ResponsiveContainer>
+      </div>
+      <div className="chart-card" style={{marginTop:18}}>
+        <div className="chart-title">Weekly Summary</div>
+        <table className="data-table">
+          <thead><tr><th>Week</th><th>Date Range</th><th>Avg Predicted</th><th>Lower</th><th>Upper</th><th>Trend</th></tr></thead>
+          <tbody>
+            {[0,1,2,3].map(w=>{
+              const s=data[w*7], e=data[Math.min(w*7+6,data.length-1)];
+              if(!s||!e) return null;
+              const avg=Math.round((s.predicted_cases+e.predicted_cases)/2);
+              return (<tr key={w}>
+                <td>Week {w+1}</td>
+                <td>{s.date?.slice(5)} – {e.date?.slice(5)}</td>
+                <td style={{color:'#7bed9f',fontWeight:600}}>{avg.toLocaleString()}</td>
+                <td style={{color:'#5a6a8a'}}>{s.lower_bound?.toLocaleString()}</td>
+                <td style={{color:'#5a6a8a'}}>{e.upper_bound?.toLocaleString()}</td>
+                <td>{e.predicted_cases>s.predicted_cases?'Rising':'Falling'}</td>
+              </tr>);
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════
+// ALERTS
+// ═══════════════════════════════════════
+function Alerts({backendUp}) {
+  const [all, setAll] = useState([]);
+  const [filter, setFilter] = useState('ALL');
+  useEffect(()=>{
+    const load=async()=>{
+      if(backendUp){ const r=await apiFetch('/alerts'); if(r&&r.data){setAll(r.data);return;} }
+      setAll(MOCK.alerts);
+    }; load();
+  },[backendUp]);
+
+  const shown = filter==='ALL'?all:all.filter(a=>a.level===filter);
+  const cnt = all.reduce((a,x)=>{a[x.level]=(a[x.level]||0)+1;return a;},{});
+  return (
+    <div>
+      <div className="page-title">Early Warning Alerts</div>
+      <div className="filter-bar">
+        {[['ALL','#00d4ff',all.length],['CRITICAL','#8e44ad',cnt.CRITICAL||0],
+          ['HIGH','#e74c3c',cnt.HIGH||0],['MEDIUM','#f39c12',cnt.MEDIUM||0],['LOW','#27ae60',cnt.LOW||0]]
+          .map(([lvl,color,count])=>(
+          <button key={lvl} onClick={()=>setFilter(lvl)} style={{
+            background:filter===lvl?color+'33':'#0d1230',
+            border:`1px solid ${filter===lvl?color:'#1e2a5e'}`,
+            color:filter===lvl?color:'#a0b4d6',
+            padding:'7px 14px',borderRadius:8,cursor:'pointer',fontSize:'0.82rem'
+          }}>{lvl} ({count})</button>
+        ))}
+      </div>
+      <div className="alert-list">
+        {shown.map((a,i)=>(
+          <div key={i} className={`alert-item ${a.level}`}>
+            <div className="alert-title-text">
+              <span className={`badge badge-${a.level}`}>{a.level}</span>{a.title}
+            </div>
+            <div className="alert-msg">{a.message}</div>
+            <div className="alert-meta">{a.region} | {a.metric}: {typeof a.value==='number'?a.value.toLocaleString():a.value} | {a.timestamp}</div>
+          </div>
+        ))}
+        {shown.length===0&&<div className="loading">No alerts for this filter.</div>}
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════
+// HOSPITAL
+// ═══════════════════════════════════════
+function Hospital({backendUp}) {
+  const [data, setData] = useState([]);
+  useEffect(()=>{
+    const load=async()=>{
+      if(backendUp){const r=await apiFetch('/hospital-capacity');if(r&&r.data){setData(r.data);return;}}
+      setData(MOCK.hospitals);
+    }; load();
+  },[backendUp]);
+
+  const chartData=data.map(h=>({
+    name:h.hospital_name.split(' ').slice(0,2).join(' '),
+    'Total Beds':h.total_beds,'Occupied':h.occupied_beds,
+    'ICU':h.icu_beds,'ICU Occ':h.occupied_icu
+  }));
+  const occColor=v=>v>=0.95?'#8e44ad':v>=0.80?'#e74c3c':v>=0.60?'#f39c12':'#27ae60';
+  return (
+    <div>
+      <div className="page-title">Hospital Capacity Monitor</div>
+      <div className="chart-card" style={{marginBottom:18}}>
+        <div className="chart-title">Beds vs Occupancy</div>
+        <ResponsiveContainer width="100%" height={260}>
+          <BarChart data={chartData} margin={{bottom:50}}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#1e2a5e"/>
+            <XAxis dataKey="name" tick={{fill:'#5a6a8a',fontSize:10}} angle={-25} textAnchor="end"/>
+            <YAxis tick={{fill:'#5a6a8a',fontSize:10}}/>
+            <Tooltip contentStyle={{background:'#0d1230',border:'1px solid #1e2a5e',borderRadius:8}}/>
+            <Legend wrapperStyle={{color:'#a0b4d6'}}/>
+            <Bar dataKey="Total Beds" fill="#1e2a5e" radius={[4,4,0,0]}/>
+            <Bar dataKey="Occupied" fill="#e74c3c" radius={[4,4,0,0]}/>
+            <Bar dataKey="ICU" fill="#0d3a5e" radius={[4,4,0,0]}/>
+            <Bar dataKey="ICU Occ" fill="#8e44ad" radius={[4,4,0,0]}/>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      <div className="chart-card">
+        <div className="chart-title">Hospital Details</div>
+        <div style={{overflowX:'auto'}}>
+          <table className="data-table">
+            <thead><tr><th>Hospital</th><th>State</th><th>Total Beds</th><th>Bed Occ</th><th>ICU Beds</th><th>ICU Occ</th><th>PPE Days</th></tr></thead>
+            <tbody>{data.map((h,i)=>(
+              <tr key={i}>
+                <td style={{fontWeight:600}}>{h.hospital_name}</td>
+                <td>{h.state}</td>
+                <td>{h.total_beds?.toLocaleString()}</td>
+                <td>
+                  <div style={{color:occColor(h.occupancy_rate),fontSize:'0.78rem'}}>{Math.round(h.occupancy_rate*100)}%</div>
+                  <div className="progress-bar"><div className="progress-fill" style={{width:`${h.occupancy_rate*100}%`,background:occColor(h.occupancy_rate)}}/></div>
+                </td>
+                <td>{h.icu_beds}</td>
+                <td>
+                  <div style={{color:occColor(h.icu_occupancy_rate),fontSize:'0.78rem'}}>{Math.round(h.icu_occupancy_rate*100)}%</div>
+                  <div className="progress-bar"><div className="progress-fill" style={{width:`${h.icu_occupancy_rate*100}%`,background:occColor(h.icu_occupancy_rate)}}/></div>
+                </td>
+                <td style={{color:(h.ppe_stock_days||0)<7?'#ff4757':'#2ed573'}}>{h.ppe_stock_days||'—'}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════
+// VACCINATION
+// ═══════════════════════════════════════
+function Vaccination({backendUp}) {
+  const [vax, setVax] = useState(null);
+  useEffect(()=>{
+    const load=async()=>{
+      if(backendUp){const r=await apiFetch('/vaccination');if(r&&r.data){setVax(r.data);return;}}
+      setVax(MOCK.vax);
+    }; load();
+  },[backendUp]);
+
+  if(!vax) return <div className="loading">Loading vaccination data...</div>;
+  const brandData=Object.entries(vax.by_brand||{}).map(([name,value])=>({name,value}));
+  const ageData=Object.entries(vax.by_age||{}).map(([name,value])=>({name,value}));
+  return (
+    <div>
+      <div className="page-title">Vaccination Tracker</div>
+      <div className="kpi-grid" style={{marginBottom:18}}>
+        {[['Total Vaccinated',vax.total_vaccinated,'#7bed9f'],['1st Dose',vax.first_dose,'#00d4ff'],
+          ['2nd Dose',vax.second_dose,'#ffa502'],['Booster',vax.booster_dose,'#a29bfe'],
+          ['Adverse Reactions',vax.adverse_reactions,'#ff4757']]
+          .map(([l,v,c])=>(
+          <div className="kpi-card" key={l}><div className="kpi-label">{l}</div><div className="kpi-value" style={{color:c}}>{fmt(v)}</div></div>
+        ))}
+      </div>
+      <div className="charts-grid">
+        <div className="chart-card">
+          <div className="chart-title">Vaccines by Brand</div>
+          <ResponsiveContainer width="100%" height={240}>
+            <PieChart>
+              <Pie data={brandData} cx="50%" cy="50%" outerRadius={85} dataKey="value"
+                   label={({name,percent})=>`${name} ${(percent*100).toFixed(0)}%`} labelLine={false}>
+                {brandData.map((_,i)=><Cell key={i} fill={COLORS[i%COLORS.length]}/>)}
+              </Pie>
+              <Tooltip formatter={v=>fmt(v)} contentStyle={{background:'#0d1230',border:'1px solid #1e2a5e',borderRadius:8}}/>
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="chart-card">
+          <div className="chart-title">Vaccination by Age Group</div>
+          <ResponsiveContainer width="100%" height={240}>
+            <BarChart data={ageData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#1e2a5e"/>
+              <XAxis dataKey="name" tick={{fill:'#5a6a8a',fontSize:11}}/>
+              <YAxis tick={{fill:'#5a6a8a',fontSize:10}} tickFormatter={fmt}/>
+              <Tooltip formatter={v=>fmt(v)} contentStyle={{background:'#0d1230',border:'1px solid #1e2a5e',borderRadius:8}}/>
+              <Bar dataKey="value" name="Vaccinated" radius={[6,6,0,0]}>
+                {ageData.map((_,i)=><Cell key={i} fill={COLORS[i%COLORS.length]}/>)}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="chart-card full">
+          <div className="chart-title">Vaccination Rollout Timeline</div>
+          <ResponsiveContainer width="100%" height={200}>
+            <AreaChart data={(vax.timeline||[]).slice(0,24)}>
+              <defs>
+                <linearGradient id="vg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#7bed9f" stopOpacity={0.4}/>
+                  <stop offset="95%" stopColor="#7bed9f" stopOpacity={0}/>
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" stroke="#1e2a5e"/>
+              <XAxis dataKey="date" tick={{fill:'#5a6a8a',fontSize:10}} tickFormatter={d=>d?.slice(2,10)}/>
+              <YAxis tick={{fill:'#5a6a8a',fontSize:10}} tickFormatter={fmt}/>
+              <Tooltip formatter={v=>fmt(v)} contentStyle={{background:'#0d1230',border:'1px solid #1e2a5e',borderRadius:8}}/>
+              <Area type="monotone" dataKey="total_vaccinated" name="Vaccinated" stroke="#7bed9f" fill="url(#vg)" strokeWidth={2} dot={false}/>
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════
+// RISK SCORES
+// ═══════════════════════════════════════
+function RiskScores({backendUp}) {
+  const [scores, setScores] = useState([]);
+  const [sel, setSel] = useState(null);
+  useEffect(()=>{
+    const load=async()=>{
+      if(backendUp){
+        const r=await fetch(API+'/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'risk_scores'})}).then(x=>x.json()).catch(()=>null);
+        if(r&&r.data&&r.data.length>0){setScores(r.data);setSel(r.data[0]);return;}
+      }
+      setScores(MOCK.top_risk); setSel(MOCK.top_risk[0]);
+    }; load();
+  },[backendUp]);
+
+  const col=lvl=>({CRITICAL:'#8e44ad',HIGH:'#e74c3c',MEDIUM:'#f39c12',LOW:'#27ae60'}[lvl]||'#00d4ff');
+  return (
+    <div>
+      <div className="page-title">Regional Risk Scores</div>
+      <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:18}}>
+        <div className="chart-card">
+          <div className="chart-title">All States — Risk Overview</div>
+          {scores.map((s,i)=>(
+            <div key={i} onClick={()=>setSel(s)} style={{
+              padding:'11px 13px',borderRadius:10,cursor:'pointer',marginBottom:8,
+              background:sel?.state===s.state?'#1e2a5e':'#111730',
+              border:`1px solid ${sel?.state===s.state?col(s.risk_level):'#1e2a5e'}`,
+              transition:'all 0.2s'
+            }}>
+              <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:6}}>
+                <span style={{fontWeight:600}}>{s.state}</span>
+                <span className={`risk-badge risk-${s.risk_level}`}>{s.risk_level}</span>
+              </div>
+              <div className="progress-bar">
+                <div className="progress-fill" style={{width:`${s.risk_score}%`,background:col(s.risk_level)}}/>
+              </div>
+              <div style={{display:'flex',justifyContent:'space-between',marginTop:4,fontSize:'0.72rem',color:'#5a6a8a'}}>
+                <span>Score: {s.risk_score}</span>
+                <span>CFR: {typeof s.avg_cfr==='number'?s.avg_cfr.toFixed(2):s.avg_cfr}%</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        {sel&&(
+          <div className="chart-card">
+            <div className="chart-title">{sel.state} — Risk Detail</div>
+            <div style={{textAlign:'center',padding:'20px 0'}}>
+              <div style={{fontSize:'4rem',fontWeight:900,color:col(sel.risk_level)}}>{sel.risk_score}</div>
+              <div style={{color:'#a0b4d6',marginBottom:14}}>Risk Score / 100</div>
+              <span className={`risk-badge risk-${sel.risk_level}`} style={{fontSize:'0.9rem',padding:'5px 14px'}}>
+                {sel.risk_level} RISK
+              </span>
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:10,marginTop:16}}>
+              {[['Avg Daily Cases',Math.round(sel.avg_new_cases).toLocaleString()],
+                ['Case Fatality Rate',(typeof sel.avg_cfr==='number'?sel.avg_cfr.toFixed(2):sel.avg_cfr)+'%']]
+                .map(([k,v])=>(
+                <div key={k} style={{background:'#111730',padding:12,borderRadius:8}}>
+                  <div style={{fontSize:'0.7rem',color:'#5a6a8a',marginBottom:4}}>{k}</div>
+                  <div style={{fontWeight:700}}>{v}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════
+// MAIN APP
+// ═══════════════════════════════════════
+const TABS=[
+  {id:'dashboard',label:'Dashboard'},
+  {id:'cases',label:'Cases'},
+  {id:'prediction',label:'Prediction'},
+  {id:'alerts',label:'Alerts'},
+  {id:'hospital',label:'Hospital'},
+  {id:'vaccination',label:'Vaccination'},
+  {id:'risk',label:'Risk Scores'},
+];
+
+function App() {
+  const [tab, setTab] = useState('dashboard');
+  const [backendUp, setBackendUp] = useState(false);
+
+  useEffect(()=>{
+    fetch(API+'/health').then(r=>r.json()).then(r=>{
+      if(r.status==='healthy') setBackendUp(true);
+    }).catch(()=>setBackendUp(false));
+  },[]);
+
+  const renderTab=()=>{
+    const props={backendUp};
+    switch(tab){
+      case 'dashboard':  return <Dashboard {...props}/>;
+      case 'cases':      return <CasesChart {...props}/>;
+      case 'prediction': return <Prediction {...props}/>;
+      case 'alerts':     return <Alerts {...props}/>;
+      case 'hospital':   return <Hospital {...props}/>;
+      case 'vaccination':return <Vaccination {...props}/>;
+      case 'risk':       return <RiskScores {...props}/>;
+      default:           return <Dashboard {...props}/>;
+    }
+  };
+
+  return (
+    <div>
+      <nav className="navbar">
+        <div className="navbar-brand">
+          <h1>COVID-19 Predictive Analytics</h1>
+        </div>
+        <div className="navbar-links">
+          {TABS.map(t=>(
+            <button key={t.id} className={`nav-btn ${tab===t.id?'active':''}`} onClick={()=>setTab(t.id)}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </nav>
+      <div className="app-container" style={{paddingBottom:40}}>
+        {renderTab()}
+      </div>
+      <div className="status-bar">
+        <span>
+          <span className={`status-dot ${backendUp?'dot-green':'dot-yellow'}`}></span>
+          Backend: {backendUp?'Connected (localhost:5000)':'Offline — showing mock data'}
+        </span>
+        <span>Datasets: 3,600 rows | States: 10 Indian + 5 International | Period: 2020-2023</span>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

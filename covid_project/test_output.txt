@@ -1,0 +1,28 @@
+Testing backend modules...
+[OK] All datasets loaded successfully.
+[OK] DataProcessor - confirmed: 79,963,459, deaths: 1,788,970
+[OK] ML Model trained (numpy poly regression)
+[OK] ML Model - 30 day predictions, 6 risk states
+     Top risk: Tamil Nadu score=100.0 (CRITICAL)
+[OK] Alert System - 30 alerts generated
+     First alert: CRITICAL - [CRITICAL] Hospital Near Capacity: SGPGI
+Initializing COVID Analytics Platform...
+[OK] All datasets loaded successfully.
+[OK] ML Model trained (numpy poly regression)
+Platform ready!
+[OK] GET / (frontend)
+[OK] GET /api/health
+[OK] GET /api/dashboard
+[OK] GET /api/cases
+[OK] GET /api/alerts
+[OK] GET /api/hotspots
+[OK] GET /api/hospital-capacity
+[OK] GET /api/vaccination
+[OK] GET /api/predict
+[OK] POST /api/analyze
+
+============================
+ALL BACKEND TESTS PASSED OK
+============================
+Run:  python app.py  -> open http://localhost:5000
+Exit code: 0 

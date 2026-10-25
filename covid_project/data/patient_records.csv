@@ -1,0 +1,801 @@
+patient_id,age,gender,comorbidities,symptoms,hospitalization_date,discharge_date,outcome,icu_admitted,ventilator_used,vaccination_status,variant_type
+PID10000,51,Male,"Diabetes,Hypertension","Breathlessness,Chest Pain",2022-12-09,2022-12-13,Recovered,False,False,Sputnik V,XBB
+PID10001,84,Female,Heart Disease,"Fever,Cough",2023-01-28,2023-02-27,Recovered,False,False,Pfizer,XBB
+PID10002,12,Male,Diabetes,"Fever,Fatigue,Cough",2023-09-07,2023-09-30,Recovered,False,False,Unvaccinated,XBB
+PID10003,77,Male,Asthma,"Cough,Fatigue",2022-04-23,2022-05-01,Recovered,False,False,Pfizer,Omicron
+PID10004,73,Male,CKD,"Fever,Body Ache",2022-10-30,2022-11-22,Recovered,False,False,Covishield,Omicron
+PID10005,47,Female,Diabetes,"Fever,Fatigue,Cough",2021-04-27,2021-05-12,Recovered,True,True,Sputnik V,Alpha
+PID10006,74,Female,None,"Fever,Body Ache",2022-10-01,2022-10-05,Recovered,False,False,Covishield,XBB
+PID10007,51,Male,None,Asymptomatic,2020-07-20,2020-08-17,Recovered,False,False,Unvaccinated,Original
+PID10008,59,Male,Hypertension,"Fever,Breathlessness",2020-04-30,2020-05-27,Recovered,False,False,Unvaccinated,Original
+PID10009,15,Male,Heart Disease,"Loss of smell,Fever",2021-09-26,2021-10-11,Recovered,False,False,Moderna,Delta
+PID10010,59,Male,Obesity,"Breathlessness,Chest Pain",2020-07-03,2020-07-08,Recovered,False,False,Unvaccinated,Original
+PID10011,65,Female,CKD,"Fever,Cough",2022-07-21,2022-08-08,Recovered,False,False,Pfizer,XBB
+PID10012,81,Male,Asthma,"Breathlessness,Chest Pain",2023-05-07,2023-06-04,Recovered,False,False,Moderna,XBB
+PID10013,63,Female,Diabetes,"Fever,Body Ache",2020-04-13,2020-04-20,Recovered,False,False,Unvaccinated,Original
+PID10014,5,Female,Diabetes,"Fever,Cough",2021-09-04,2021-09-23,Recovered,False,False,Sputnik V,Alpha
+PID10015,29,Female,Obesity,"Breathlessness,Chest Pain",2021-06-05,2021-07-01,Recovered,False,False,Moderna,Alpha
+PID10016,78,Female,Heart Disease,"Fever,Breathlessness",2021-05-18,2021-05-27,Recovered,False,False,Unvaccinated,Delta
+PID10017,63,Female,Diabetes,"Loss of smell,Fever",2023-01-01,2023-01-24,Recovered,False,False,Pfizer,XBB
+PID10018,52,Female,Heart Disease,"Fever,Body Ache",2022-10-10,2022-10-26,Recovered,False,False,Pfizer,XBB
+PID10019,84,Male,Diabetes,"Fever,Cough",2023-10-04,2023-10-16,Recovered,False,False,Unvaccinated,Omicron
+PID10020,18,Female,"Obesity,Heart Disease","Fever,Cough",2023-08-29,2023-09-14,Recovered,False,False,Unvaccinated,XBB
+PID10021,58,Male,"Diabetes,Hypertension","Fever,Breathlessness",2021-10-29,2021-11-28,Recovered,False,False,Unvaccinated,Delta
+PID10022,64,Female,Obesity,"Fever,Fatigue,Cough",2022-03-03,2022-03-31,Recovered,False,False,Unvaccinated,Omicron
+PID10023,38,Male,None,"Fever,Body Ache",2021-09-14,2021-10-08,Recovered,False,False,Sputnik V,Delta
+PID10024,8,Female,Asthma,"Loss of smell,Fever",2020-05-20,2020-05-23,Recovered,False,False,Unvaccinated,Original
+PID10025,35,Female,None,"Fever,Body Ache",2023-05-30,2023-06-15,Recovered,False,False,Sputnik V,XBB
+PID10026,54,Male,CKD,Asymptomatic,2020-12-03,2020-12-26,Recovered,False,False,Unvaccinated,Alpha
+PID10027,21,Female,Heart Disease,"Loss of smell,Fever",2020-10-04,2020-10-29,Recovered,False,False,Unvaccinated,Original
+PID10028,16,Male,CKD,"Fever,Cough",2022-01-04,2022-01-13,Recovered,False,False,Unvaccinated,Delta
+PID10029,86,Male,Heart Disease,Asymptomatic,2020-12-07,2020-12-24,Recovered,False,False,Unvaccinated,Original
+PID10030,36,Male,Heart Disease,"Fever,Breathlessness",2023-03-16,2023-04-14,Recovered,False,False,Covaxin,Omicron BA.2
+PID10031,7,Male,"Diabetes,Hypertension","Fever,Breathlessness",2021-01-03,2021-01-26,Recovered,False,False,Unvaccinated,Original
+PID10032,41,Male,"Diabetes,Hypertension","Breathlessness,Chest Pain",2020-10-20,2020-10-27,Recovered,False,False,Unvaccinated,Original
+PID10033,17,Male,Obesity,"Fever,Body Ache",2021-05-14,2021-05-29,Deceased,False,False,Pfizer,Alpha
+PID10034,86,Male,Hypertension,"Fever,Cough",2022-04-22,2022-05-05,Recovered,False,False,Covaxin,Delta
+PID10035,49,Male,Hypertension,"Fever,Fatigue,Cough",2020-11-10,2020-11-23,Recovered,False,False,Unvaccinated,Original
+PID10036,82,Male,Obesity,"Breathlessness,Chest Pain",2020-11-19,2020-11-28,Deceased,False,False,Unvaccinated,Original
+PID10037,8,Male,Heart Disease,"Fever,Fatigue,Cough",2020-11-05,2020-11-14,Recovered,False,False,Unvaccinated,Original
+PID10038,16,Female,CKD,"Fever,Body Ache",2022-11-26,2022-12-05,Recovered,False,False,Pfizer,Omicron BA.2
+PID10039,27,Male,Heart Disease,"Loss of smell,Fever",2021-04-14,2021-04-25,Recovered,False,False,Pfizer,Delta
+PID10040,67,Male,CKD,"Fever,Body Ache",2021-05-10,2021-06-05,Recovered,False,False,Covaxin,Delta
+PID10041,50,Male,None,"Fever,Fatigue,Cough",2021-04-28,2021-05-19,Recovered,False,False,Pfizer,Alpha
+PID10042,42,Female,None,"Fever,Breathlessness",2023-06-29,2023-07-15,Recovered,False,False,Covaxin,XBB
+PID10043,46,Male,Asthma,"Breathlessness,Chest Pain",2021-03-18,2021-04-15,Recovered,False,False,Unvaccinated,Original
+PID10044,45,Female,Obesity,"Cough,Fatigue",2021-01-06,2021-02-02,Recovered,False,False,Unvaccinated,Original
+PID10045,46,Male,"Obesity,Heart Disease",Asymptomatic,2023-05-21,2023-06-18,Recovered,False,False,Covaxin,Omicron BA.2
+PID10046,40,Male,CKD,"Fever,Body Ache",2020-10-11,2020-10-31,Recovered,False,False,Unvaccinated,Original
+PID10047,45,Male,Heart Disease,"Fever,Body Ache",2021-12-25,2022-01-23,Recovered,False,False,Pfizer,Omicron
+PID10048,62,Female,Obesity,"Fever,Cough",2020-11-14,2020-11-20,Recovered,False,False,Unvaccinated,Original
+PID10049,87,Female,Hypertension,"Fever,Body Ache",2021-10-19,2021-10-22,Recovered,False,False,Pfizer,Alpha
+PID10050,72,Male,"Diabetes,Hypertension","Fever,Breathlessness",2020-05-29,2020-06-18,Recovered,False,False,Unvaccinated,Original
+PID10051,43,Female,"Diabetes,Hypertension","Fever,Cough",2022-07-13,2022-08-08,Recovered,False,False,Unvaccinated,Omicron BA.2
+PID10052,63,Male,None,Asymptomatic,2022-05-29,2022-06-10,Recovered,False,False,Covaxin,Delta
+PID10053,6,Female,Obesity,"Loss of smell,Fever",2020-06-20,2020-07-19,Recovered,False,False,Unvaccinated,Original
+PID10054,52,Male,None,"Fever,Fatigue,Cough",2020-09-11,2020-09-20,Recovered,False,False,Unvaccinated,Original
+PID10055,11,Female,CKD,"Fever,Fatigue,Cough",2020-06-11,2020-06-17,Recovered,False,False,Unvaccinated,Original
+PID10056,79,Female,"Diabetes,Hypertension","Fever,Breathlessness",2021-02-26,2021-03-05,Recovered,False,False,Moderna,Original
+PID10057,35,Female,Obesity,"Fever,Breathlessness",2023-02-16,2023-03-07,Recovered,False,False,Covaxin,Omicron BA.2
+PID10058,42,Male,Diabetes,"Fever,Breathlessness",2021-09-06,2021-10-03,Recovered,False,False,Sputnik V,Alpha
+PID10059,32,Female,Diabetes,"Breathlessness,Chest Pain",2022-12-22,2022-12-26,Recovered,False,False,Covishield,Omicron BA.2
+PID10060,80,Female,Hypertension,"Fever,Breathlessness",2021-05-16,2021-06-14,Recovered,False,False,Covaxin,Delta
+PID10061,51,Male,CKD,Asymptomatic,2020-12-06,2020-12-16,Recovered,False,False,Unvaccinated,Beta
+PID10062,59,Male,Hypertension,"Cough,Fatigue",2020-08-02,2020-08-13,Recovered,False,False,Unvaccinated,Original
+PID10063,19,Male,Heart Disease,"Fever,Cough",2020-10-20,2020-11-15,Recovered,False,False,Unvaccinated,Original
+PID10064,72,Female,CKD,Asymptomatic,2022-11-15,2022-12-09,Recovered,False,False,Unvaccinated,XBB
+PID10065,69,Female,Diabetes,"Fever,Cough",2021-01-17,2021-02-01,Recovered,False,False,Covaxin,Alpha
+PID10066,59,Female,"Obesity,Heart Disease","Cough,Fatigue",2023-11-03,2023-11-18,Active,False,False,Moderna,Omicron
+PID10067,18,Male,None,"Fever,Cough",2023-02-10,2023-02-26,Recovered,False,False,Covishield,Omicron
+PID10068,35,Female,CKD,"Fever,Body Ache",2023-06-06,2023-06-17,Recovered,False,False,Moderna,Omicron
+PID10069,39,Male,Asthma,"Fever,Fatigue,Cough",2020-10-08,2020-10-18,Recovered,False,False,Unvaccinated,Original
+PID10070,5,Female,Heart Disease,Asymptomatic,2023-07-19,2023-07-31,Recovered,False,False,Moderna,XBB
+PID10071,13,Male,"Diabetes,Hypertension","Fever,Body Ache",2021-02-26,2021-03-11,Recovered,False,False,Covishield,Alpha
+PID10072,27,Male,Asthma,"Cough,Fatigue",2022-01-28,2022-01-31,Recovered,False,False,Sputnik V,Delta
+PID10073,67,Female,Obesity,"Loss of smell,Fever",2023-06-22,2023-06-25,Recovered,False,False,Unvaccinated,Omicron
+PID10074,17,Female,"Diabetes,Hypertension","Breathlessness,Chest Pain",2021-01-09,2021-02-05,Recovered,False,False,Unvaccinated,Alpha
+PID10075,89,Female,Asthma,"Cough,Fatigue",2023-04-06,2023-04-17,Recovered,False,False,Covaxin,Omicron
+PID10076,71,Female,Obesity,"Loss of smell,Fever",2020-10-31,2020-11-11,Deceased,False,False,Unvaccinated,Original
+PID10077,8,Male,Diabetes,Asymptomatic,2022-03-16,2022-04-03,Recovered,False,False,Covaxin,Omicron
+PID10078,18,Male,Heart Disease,"Breathlessness,Chest Pain",2022-04-27,2022-05-20,Recovered,False,False,Moderna,Omicron
+PID10079,80,Male,"Obesity,Heart Disease","Breathlessness,Chest Pain",2022-01-22,2022-02-06,Recovered,False,False,Covishield,Omicron
+PID10080,60,Male,None,"Cough,Fatigue",2023-08-21,2023-08-27,Recovered,False,False,Covaxin,Omicron BA.2
+PID10081,24,Male,Heart Disease,"Cough,Fatigue",2021-01-10,2021-01-27,Recovered,False,False,Unvaccinated,Beta
+PID10082,42,Female,Heart Disease,"Fever,Cough",2021-10-26,2021-10-31,Recovered,True,True,Unvaccinated,Alpha
+PID10083,89,Female,"Obesity,Heart Disease","Loss of smell,Fever",2022-08-13,2022-08-27,Recovered,False,False,Covaxin,Omicron
+PID10084,39,Female,Diabetes,"Fever,Fatigue,Cough",2020-09-07,2020-10-02,Recovered,False,False,Unvaccinated,Original
+PID10085,65,Female,Diabetes,"Fever,Fatigue,Cough",2021-06-06,2021-06-10,Recovered,False,False,Pfizer,Delta
+PID10086,44,Male,Obesity,"Fever,Fatigue,Cough",2021-11-23,2021-12-15,Recovered,False,False,Moderna,Delta
+PID10087,75,Female,"Obesity,Heart Disease","Loss of smell,Fever",2020-12-17,2021-01-02,Recovered,False,False,Unvaccinated,Alpha
+PID10088,60,Female,"Diabetes,Hypertension","Breathlessness,Chest Pain",2022-04-23,2022-05-21,Recovered,False,False,Moderna,Omicron
+PID10089,58,Female,Diabetes,"Loss of smell,Fever",2022-08-07,2022-08-24,Recovered,False,False,Unvaccinated,XBB
+PID10090,36,Female,None,"Fever,Body Ache",2023-08-26,2023-09-07,Recovered,False,False,Moderna,XBB
+PID10091,90,Female,None,"Fever,Breathlessness",2020-11-27,2020-12-12,Recovered,True,False,Unvaccinated,Original
+PID10092,88,Female,"Diabetes,Hypertension","Breathlessness,Chest Pain",2020-07-05,2020-07-16,Recovered,False,False,Unvaccinated,Original
+PID10093,79,Male,Obesity,"Loss of smell,Fever",2020-07-17,2020-07-23,Recovered,False,False,Unvaccinated,Original
+PID10094,68,Female,Heart Disease,"Fever,Cough",2023-05-10,2023-06-05,Recovered,False,False,Covishield,XBB
+PID10095,30,Male,Obesity,Asymptomatic,2022-12-03,2022-12-25,Deceased,False,False,Unvaccinated,XBB
+PID10096,8,Male,Diabetes,"Fever,Fatigue,Cough",2020-10-13,2020-10-31,Recovered,False,False,Unvaccinated,Original
+PID10097,28,Female,Diabetes,"Fever,Body Ache",2022-06-21,2022-07-09,Recovered,False,False,Covaxin,XBB
+PID10098,7,Male,Hypertension,Asymptomatic,2021-01-08,2021-01-31,Recovered,False,False,Unvaccinated,Beta
+PID10099,42,Female,Heart Disease,"Fever,Body Ache",2022-11-15,2022-12-03,Recovered,False,False,Pfizer,XBB
+PID10100,18,Female,"Diabetes,Hypertension","Fever,Breathlessness",2022-05-14,2022-06-08,Recovered,False,False,Unvaccinated,Delta
+PID10101,6,Female,None,"Breathlessness,Chest Pain",2023-05-14,2023-05-29,Deceased,False,False,Sputnik V,XBB
+PID10102,63,Male,Asthma,"Fever,Body Ache",2020-12-25,2021-01-11,Recovered,False,False,Unvaccinated,Alpha
+PID10103,27,Female,"Diabetes,Hypertension","Loss of smell,Fever",2023-01-29,2023-02-03,Recovered,False,False,Moderna,XBB
+PID10104,89,Female,Hypertension,"Fever,Fatigue,Cough",2021-10-06,2021-11-03,Recovered,False,False,Pfizer,Delta
+PID10105,46,Female,Diabetes,"Fever,Cough",2020-12-05,2020-12-30,Recovered,False,False,Unvaccinated,Beta
+PID10106,25,Female,"Diabetes,Hypertension","Breathlessness,Chest Pain",2020-05-14,2020-06-13,Recovered,False,False,Unvaccinated,Original
+PID10107,35,Male,None,"Fever,Fatigue,Cough",2021-07-02,2021-07-29,Recovered,False,False,Pfizer,Delta
+PID10108,14,Male,Hypertension,"Breathlessness,Chest Pain",2020-11-04,2020-11-08,Recovered,False,False,Unvaccinated,Original
+PID10109,62,Male,Obesity,"Fever,Fatigue,Cough",2020-10-21,2020-11-15,Recovered,False,False,Unvaccinated,Original
+PID10110,41,Male,Diabetes,"Fever,Cough",2022-12-15,2023-01-01,Recovered,False,False,Moderna,Omicron BA.2
+PID10111,17,Female,"Obesity,Heart Disease","Fever,Breathlessness",2023-09-24,2023-10-18,Recovered,False,False,Covaxin,Omicron
+PID10112,87,Female,"Obesity,Heart Disease","Breathlessness,Chest Pain",2022-02-10,2022-02-18,Recovered,False,False,Moderna,Delta
+PID10113,76,Female,Diabetes,"Fever,Breathlessness",2022-03-15,2022-04-06,Recovered,False,False,Pfizer,Omicron
+PID10114,71,Male,None,"Breathlessness,Chest Pain",2020-11-30,2020-12-28,Recovered,False,False,Unvaccinated,Original
+PID10115,42,Female,Diabetes,"Loss of smell,Fever",2020-04-30,2020-05-10,Recovered,False,False,Unvaccinated,Original
+PID10116,73,Male,"Obesity,Heart Disease","Fever,Breathlessness",2021-10-25,2021-10-30,Recovered,False,False,Pfizer,Delta
+PID10117,38,Male,Asthma,"Fever,Cough",2023-06-21,2023-07-09,Deceased,False,False,Covaxin,Omicron BA.2
+PID10118,75,Male,Obesity,"Cough,Fatigue",2020-12-25,2021-01-03,Recovered,False,False,Unvaccinated,Beta
+PID10119,77,Male,Asthma,"Fever,Breathlessness",2020-08-11,2020-09-08,Recovered,False,False,Unvaccinated,Original
+PID10120,83,Female,None,"Fever,Breathlessness",2022-07-15,2022-08-06,Recovered,False,False,Covishield,Omicron BA.2
+PID10121,69,Female,Heart Disease,Asymptomatic,2020-05-26,2020-06-13,Recovered,False,False,Unvaccinated,Original
+PID10122,8,Female,None,"Cough,Fatigue",2020-04-27,2020-05-01,Recovered,False,False,Unvaccinated,Original
+PID10123,53,Female,"Obesity,Heart Disease","Loss of smell,Fever",2020-06-29,2020-07-14,Recovered,False,False,Unvaccinated,Original
+PID10124,20,Female,Asthma,Asymptomatic,2020-11-06,2020-11-23,Recovered,False,False,Unvaccinated,Original
+PID10125,12,Female,"Obesity,Heart Disease","Fever,Cough",2022-02-15,2022-03-03,Recovered,False,False,Covishield,Delta
+PID10126,36,Male,"Diabetes,Hypertension","Loss of smell,Fever",2020-04-14,2020-05-14,Recovered,False,False,Unvaccinated,Original
+PID10127,45,Male,CKD,"Cough,Fatigue",2021-10-14,2021-10-18,Recovered,False,False,Covaxin,Alpha
+PID10128,89,Female,Asthma,Asymptomatic,2023-11-21,2023-11-27,Active,False,False,Covishield,XBB
+PID10129,43,Male,"Obesity,Heart Disease","Fever,Fatigue,Cough",2022-09-09,2022-10-04,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10130,74,Female,Heart Disease,"Fever,Breathlessness",2021-12-28,2022-01-22,Recovered,False,False,Sputnik V,Omicron
+PID10131,71,Female,Hypertension,"Fever,Cough",2021-05-05,2021-05-12,Recovered,False,False,Unvaccinated,Alpha
+PID10132,61,Female,None,"Fever,Fatigue,Cough",2021-07-09,2021-08-03,Recovered,False,False,Unvaccinated,Alpha
+PID10133,54,Female,"Diabetes,Hypertension","Fever,Cough",2021-10-05,2021-10-26,Recovered,False,False,Covaxin,Alpha
+PID10134,61,Female,"Obesity,Heart Disease","Fever,Cough",2022-05-07,2022-05-22,Recovered,False,False,Sputnik V,Delta
+PID10135,74,Male,None,"Breathlessness,Chest Pain",2021-11-29,2021-12-03,Recovered,False,False,Covaxin,Delta
+PID10136,59,Female,Heart Disease,"Cough,Fatigue",2023-09-08,2023-09-24,Recovered,False,False,Unvaccinated,Omicron
+PID10137,77,Male,Hypertension,"Fever,Cough",2022-07-31,2022-08-21,Recovered,False,False,Pfizer,Omicron BA.2
+PID10138,40,Female,None,"Fever,Fatigue,Cough",2021-10-10,2021-11-07,Recovered,False,False,Covaxin,Delta
+PID10139,89,Female,Asthma,"Fever,Fatigue,Cough",2022-03-25,2022-04-05,Recovered,False,False,Unvaccinated,Delta
+PID10140,64,Male,CKD,"Fever,Cough",2021-03-16,2021-04-02,Deceased,True,True,Pfizer,Alpha
+PID10141,40,Male,Heart Disease,"Fever,Fatigue,Cough",2023-06-14,2023-06-19,Recovered,False,False,Pfizer,Omicron
+PID10142,68,Male,Obesity,"Fever,Breathlessness",2021-08-28,2021-09-27,Recovered,False,False,Moderna,Alpha
+PID10143,28,Male,"Obesity,Heart Disease",Asymptomatic,2023-11-15,2023-11-19,Active,False,False,Covaxin,XBB
+PID10144,38,Female,"Obesity,Heart Disease","Fever,Cough",2020-07-17,2020-08-11,Deceased,False,False,Unvaccinated,Original
+PID10145,49,Male,Obesity,Asymptomatic,2023-07-27,2023-08-06,Recovered,False,False,Moderna,Omicron
+PID10146,52,Female,Heart Disease,"Loss of smell,Fever",2022-01-11,2022-02-01,Recovered,False,False,Sputnik V,Delta
+PID10147,82,Female,Asthma,"Cough,Fatigue",2020-05-04,2020-05-17,Recovered,False,False,Unvaccinated,Original
+PID10148,8,Male,Diabetes,Asymptomatic,2021-11-07,2021-11-29,Recovered,False,False,Moderna,Alpha
+PID10149,70,Male,Hypertension,"Fever,Body Ache",2021-12-16,2022-01-04,Recovered,False,False,Pfizer,Delta
+PID10150,14,Female,"Obesity,Heart Disease","Fever,Breathlessness",2023-11-04,2023-11-09,Active,False,False,Moderna,XBB
+PID10151,11,Female,Heart Disease,Asymptomatic,2023-02-28,2023-03-28,Recovered,False,False,Pfizer,XBB
+PID10152,36,Female,Asthma,"Fever,Breathlessness",2023-06-06,2023-06-18,Recovered,False,False,Covishield,Omicron BA.2
+PID10153,57,Female,Obesity,"Cough,Fatigue",2021-07-21,2021-08-07,Recovered,False,False,Covaxin,Alpha
+PID10154,77,Female,Hypertension,"Fever,Fatigue,Cough",2022-07-20,2022-07-30,Recovered,False,False,Covishield,XBB
+PID10155,45,Female,Obesity,"Loss of smell,Fever",2021-10-23,2021-11-05,Recovered,False,False,Moderna,Alpha
+PID10156,26,Female,Diabetes,"Loss of smell,Fever",2022-09-30,2022-10-03,Recovered,False,False,Sputnik V,XBB
+PID10157,60,Male,Hypertension,"Fever,Body Ache",2020-05-23,2020-06-21,Recovered,False,False,Unvaccinated,Original
+PID10158,21,Male,Asthma,"Breathlessness,Chest Pain",2022-07-27,2022-08-10,Recovered,False,False,Covaxin,XBB
+PID10159,83,Female,"Diabetes,Hypertension","Fever,Body Ache",2023-07-09,2023-07-31,Recovered,False,False,Sputnik V,Omicron
+PID10160,60,Male,"Obesity,Heart Disease","Fever,Breathlessness",2023-09-27,2023-10-14,Recovered,False,False,Sputnik V,Omicron
+PID10161,80,Female,"Diabetes,Hypertension","Loss of smell,Fever",2021-01-20,2021-01-23,Recovered,False,False,Pfizer,Alpha
+PID10162,80,Female,Asthma,"Fever,Cough",2023-01-20,2023-02-15,Recovered,False,False,Covaxin,Omicron
+PID10163,72,Female,CKD,"Breathlessness,Chest Pain",2023-05-14,2023-06-02,Recovered,False,False,Covaxin,Omicron BA.2
+PID10164,10,Female,"Obesity,Heart Disease","Fever,Fatigue,Cough",2021-03-15,2021-03-22,Recovered,False,False,Covishield,Beta
+PID10165,45,Female,"Diabetes,Hypertension","Cough,Fatigue",2023-06-05,2023-06-27,Recovered,False,False,Covaxin,Omicron
+PID10166,41,Female,Hypertension,"Fever,Breathlessness",2021-06-16,2021-06-24,Recovered,False,False,Covishield,Alpha
+PID10167,70,Male,None,"Cough,Fatigue",2021-05-12,2021-06-01,Deceased,False,False,Moderna,Alpha
+PID10168,31,Female,"Diabetes,Hypertension","Loss of smell,Fever",2020-05-06,2020-05-20,Recovered,False,False,Unvaccinated,Original
+PID10169,19,Female,"Diabetes,Hypertension","Fever,Fatigue,Cough",2022-09-30,2022-10-12,Recovered,False,False,Pfizer,Omicron
+PID10170,22,Male,Asthma,"Fever,Breathlessness",2020-09-08,2020-10-08,Recovered,False,False,Unvaccinated,Original
+PID10171,14,Male,Asthma,"Fever,Cough",2021-06-13,2021-07-09,Recovered,False,False,Pfizer,Delta
+PID10172,71,Male,None,Asymptomatic,2022-08-19,2022-08-25,Recovered,False,False,Sputnik V,XBB
+PID10173,53,Female,"Diabetes,Hypertension","Loss of smell,Fever",2020-12-20,2021-01-10,Recovered,False,False,Unvaccinated,Original
+PID10174,28,Male,"Obesity,Heart Disease",Asymptomatic,2022-12-02,2022-12-31,Recovered,False,False,Sputnik V,Omicron
+PID10175,13,Male,None,"Fever,Body Ache",2020-03-21,2020-04-06,Recovered,False,False,Unvaccinated,Original
+PID10176,53,Male,Heart Disease,Asymptomatic,2021-09-04,2021-09-26,Recovered,False,False,Pfizer,Delta
+PID10177,67,Female,Heart Disease,"Fever,Breathlessness",2021-11-03,2021-11-27,Recovered,False,False,Moderna,Delta
+PID10178,41,Female,Diabetes,"Loss of smell,Fever",2021-06-06,2021-06-12,Recovered,False,False,Sputnik V,Alpha
+PID10179,89,Female,"Diabetes,Hypertension","Fever,Body Ache",2022-10-22,2022-11-04,Recovered,False,False,Covishield,XBB
+PID10180,42,Female,Heart Disease,"Breathlessness,Chest Pain",2021-07-08,2021-07-11,Recovered,False,False,Unvaccinated,Delta
+PID10181,61,Female,Obesity,"Breathlessness,Chest Pain",2022-07-05,2022-07-20,Recovered,False,False,Covaxin,Omicron
+PID10182,10,Male,Diabetes,"Breathlessness,Chest Pain",2023-10-09,2023-11-07,Active,False,False,Covishield,XBB
+PID10183,74,Male,Asthma,"Breathlessness,Chest Pain",2020-12-04,2020-12-26,Recovered,False,False,Unvaccinated,Alpha
+PID10184,88,Male,"Obesity,Heart Disease","Fever,Body Ache",2023-04-21,2023-04-26,Recovered,False,False,Covishield,XBB
+PID10185,25,Male,None,"Fever,Cough",2021-06-27,2021-07-09,Recovered,False,False,Moderna,Alpha
+PID10186,72,Female,None,"Loss of smell,Fever",2020-04-25,2020-05-22,Recovered,False,False,Unvaccinated,Original
+PID10187,8,Female,Diabetes,"Fever,Body Ache",2021-10-15,2021-10-27,Recovered,False,False,Unvaccinated,Alpha
+PID10188,21,Male,"Obesity,Heart Disease","Fever,Body Ache",2023-11-17,2023-12-02,Active,False,False,Unvaccinated,Omicron
+PID10189,74,Female,Obesity,"Fever,Fatigue,Cough",2020-04-25,2020-04-28,Recovered,False,False,Unvaccinated,Original
+PID10190,70,Male,Heart Disease,"Cough,Fatigue",2022-01-06,2022-01-22,Recovered,False,False,Covishield,Omicron
+PID10191,59,Female,"Obesity,Heart Disease",Asymptomatic,2022-04-25,2022-05-07,Recovered,False,False,Pfizer,Omicron
+PID10192,68,Male,None,"Fever,Body Ache",2022-05-07,2022-05-10,Recovered,False,False,Pfizer,Delta
+PID10193,52,Male,Diabetes,"Fever,Breathlessness",2021-07-03,2021-07-20,Recovered,False,False,Covaxin,Delta
+PID10194,31,Male,CKD,"Cough,Fatigue",2023-05-07,2023-05-15,Recovered,False,False,Unvaccinated,Omicron
+PID10195,77,Female,Heart Disease,"Breathlessness,Chest Pain",2023-02-19,2023-03-17,Recovered,False,False,Covaxin,Omicron BA.2
+PID10196,46,Male,"Obesity,Heart Disease","Cough,Fatigue",2021-01-17,2021-01-21,Recovered,False,False,Covaxin,Original
+PID10197,45,Female,"Obesity,Heart Disease","Fever,Breathlessness",2023-04-06,2023-04-24,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10198,14,Male,"Obesity,Heart Disease","Fever,Breathlessness",2020-10-16,2020-11-01,Recovered,False,False,Unvaccinated,Original
+PID10199,61,Male,"Obesity,Heart Disease","Cough,Fatigue",2021-02-18,2021-02-27,Recovered,False,False,Pfizer,Alpha
+PID10200,75,Female,Heart Disease,"Fever,Fatigue,Cough",2020-12-26,2021-01-21,Deceased,False,False,Unvaccinated,Original
+PID10201,83,Female,"Obesity,Heart Disease",Asymptomatic,2023-02-18,2023-03-03,Recovered,False,False,Covishield,Omicron
+PID10202,52,Female,Hypertension,"Loss of smell,Fever",2023-08-24,2023-09-18,Recovered,False,False,Covishield,Omicron BA.2
+PID10203,65,Male,None,"Fever,Fatigue,Cough",2023-02-21,2023-03-18,Recovered,False,False,Pfizer,Omicron
+PID10204,17,Female,Hypertension,"Fever,Breathlessness",2021-04-03,2021-04-12,Recovered,False,False,Moderna,Alpha
+PID10205,76,Female,Heart Disease,"Fever,Body Ache",2022-03-02,2022-03-25,Recovered,False,False,Covishield,Delta
+PID10206,44,Male,Diabetes,"Loss of smell,Fever",2023-06-24,2023-07-20,Recovered,False,False,Moderna,Omicron BA.2
+PID10207,32,Male,Hypertension,"Fever,Body Ache",2020-10-11,2020-11-06,Recovered,False,False,Unvaccinated,Original
+PID10208,80,Male,None,Asymptomatic,2022-01-20,2022-02-10,Recovered,False,False,Covishield,Omicron
+PID10209,83,Male,None,"Loss of smell,Fever",2021-06-01,2021-06-06,Recovered,False,False,Covaxin,Alpha
+PID10210,61,Male,Obesity,"Fever,Body Ache",2023-01-26,2023-02-23,Recovered,False,False,Moderna,Omicron BA.2
+PID10211,54,Male,Obesity,"Loss of smell,Fever",2022-04-26,2022-05-23,Recovered,False,False,Moderna,Omicron
+PID10212,40,Female,Heart Disease,"Fever,Breathlessness",2023-10-03,2023-11-01,Recovered,False,False,Pfizer,XBB
+PID10213,88,Female,CKD,Asymptomatic,2023-05-01,2023-05-17,Deceased,False,False,Pfizer,Omicron BA.2
+PID10214,29,Male,"Diabetes,Hypertension","Breathlessness,Chest Pain",2023-08-30,2023-09-19,Recovered,False,False,Unvaccinated,XBB
+PID10215,5,Male,Heart Disease,"Fever,Cough",2023-02-25,2023-03-06,Recovered,False,False,Covaxin,Omicron BA.2
+PID10216,87,Female,Heart Disease,"Fever,Cough",2023-10-31,2023-11-11,Active,False,False,Sputnik V,XBB
+PID10217,8,Female,"Diabetes,Hypertension","Loss of smell,Fever",2023-05-30,2023-06-28,Recovered,False,False,Sputnik V,XBB
+PID10218,87,Male,Hypertension,"Loss of smell,Fever",2022-11-09,2022-12-05,Recovered,False,False,Covaxin,Omicron
+PID10219,58,Male,Asthma,"Fever,Breathlessness",2020-12-09,2020-12-14,Recovered,False,False,Unvaccinated,Alpha
+PID10220,29,Female,Hypertension,"Breathlessness,Chest Pain",2023-04-03,2023-04-14,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10221,90,Male,Obesity,"Loss of smell,Fever",2023-02-05,2023-02-08,Recovered,False,False,Unvaccinated,XBB
+PID10222,27,Female,Hypertension,"Fever,Cough",2021-09-12,2021-09-17,Recovered,False,False,Sputnik V,Alpha
+PID10223,76,Female,Diabetes,"Fever,Breathlessness",2021-12-12,2021-12-23,Recovered,False,False,Moderna,Delta
+PID10224,16,Male,Hypertension,"Fever,Cough",2020-09-16,2020-09-24,Recovered,False,False,Unvaccinated,Original
+PID10225,52,Male,Hypertension,"Fever,Fatigue,Cough",2021-06-03,2021-06-26,Recovered,False,False,Covaxin,Alpha
+PID10226,41,Female,CKD,Asymptomatic,2020-07-02,2020-07-17,Recovered,False,False,Unvaccinated,Original
+PID10227,30,Male,"Diabetes,Hypertension","Breathlessness,Chest Pain",2021-04-04,2021-04-15,Recovered,False,False,Covaxin,Delta
+PID10228,49,Male,None,"Fever,Body Ache",2023-06-13,2023-06-27,Recovered,False,False,Sputnik V,XBB
+PID10229,77,Female,Obesity,"Breathlessness,Chest Pain",2021-01-27,2021-02-16,Recovered,False,False,Sputnik V,Alpha
+PID10230,39,Female,Heart Disease,"Fever,Cough",2023-01-10,2023-01-30,Recovered,False,False,Covishield,Omicron BA.2
+PID10231,89,Female,Asthma,"Breathlessness,Chest Pain",2020-11-06,2020-11-25,Recovered,False,False,Unvaccinated,Original
+PID10232,89,Female,None,"Loss of smell,Fever",2023-05-13,2023-05-28,Deceased,False,False,Unvaccinated,XBB
+PID10233,47,Female,Hypertension,"Cough,Fatigue",2022-07-26,2022-08-13,Recovered,False,False,Covaxin,Omicron
+PID10234,7,Female,CKD,"Cough,Fatigue",2023-04-08,2023-04-16,Recovered,False,False,Moderna,XBB
+PID10235,52,Male,Obesity,"Fever,Breathlessness",2021-07-26,2021-08-06,Recovered,False,False,Covaxin,Delta
+PID10236,39,Male,Heart Disease,Asymptomatic,2022-07-25,2022-08-10,Recovered,False,False,Covishield,Omicron
+PID10237,22,Female,Hypertension,"Breathlessness,Chest Pain",2023-05-22,2023-06-18,Recovered,False,False,Unvaccinated,Omicron
+PID10238,26,Female,Heart Disease,"Fever,Breathlessness",2022-10-10,2022-10-25,Recovered,False,False,Covishield,Omicron
+PID10239,31,Female,None,"Cough,Fatigue",2021-03-28,2021-04-07,Recovered,False,False,Sputnik V,Original
+PID10240,17,Female,CKD,"Cough,Fatigue",2021-02-04,2021-02-18,Recovered,False,False,Covishield,Beta
+PID10241,17,Female,Heart Disease,"Fever,Body Ache",2021-07-25,2021-08-21,Recovered,False,False,Pfizer,Alpha
+PID10242,73,Male,Obesity,"Loss of smell,Fever",2023-07-20,2023-08-04,Recovered,False,False,Moderna,XBB
+PID10243,51,Male,Hypertension,"Cough,Fatigue",2021-07-09,2021-07-23,Recovered,False,False,Unvaccinated,Delta
+PID10244,32,Male,CKD,"Loss of smell,Fever",2021-04-03,2021-04-07,Recovered,False,False,Sputnik V,Delta
+PID10245,54,Male,Hypertension,"Fever,Body Ache",2021-10-19,2021-10-31,Recovered,False,False,Pfizer,Delta
+PID10246,18,Male,CKD,"Fever,Cough",2023-02-07,2023-03-08,Recovered,False,False,Sputnik V,XBB
+PID10247,21,Female,CKD,"Fever,Body Ache",2021-02-07,2021-02-20,Recovered,False,False,Unvaccinated,Alpha
+PID10248,59,Female,"Obesity,Heart Disease","Breathlessness,Chest Pain",2020-07-04,2020-07-16,Recovered,False,False,Unvaccinated,Original
+PID10249,47,Female,"Obesity,Heart Disease","Fever,Body Ache",2022-11-09,2022-12-04,Recovered,False,False,Covishield,Omicron
+PID10250,5,Female,Obesity,"Cough,Fatigue",2020-08-25,2020-09-01,Recovered,False,False,Unvaccinated,Original
+PID10251,64,Female,None,"Breathlessness,Chest Pain",2022-08-22,2022-08-26,Recovered,False,False,Pfizer,Omicron BA.2
+PID10252,48,Female,Hypertension,"Fever,Fatigue,Cough",2021-08-13,2021-08-29,Recovered,False,False,Moderna,Alpha
+PID10253,7,Male,Asthma,"Fever,Cough",2022-03-15,2022-03-31,Recovered,False,False,Moderna,Delta
+PID10254,55,Male,"Diabetes,Hypertension","Fever,Body Ache",2023-03-08,2023-04-03,Recovered,False,False,Covishield,Omicron
+PID10255,63,Male,Asthma,"Breathlessness,Chest Pain",2021-09-28,2021-10-12,Recovered,False,False,Unvaccinated,Delta
+PID10256,82,Male,CKD,"Fever,Breathlessness",2020-06-01,2020-06-08,Recovered,False,False,Unvaccinated,Original
+PID10257,43,Male,CKD,"Fever,Breathlessness",2022-02-04,2022-02-27,Deceased,False,False,Sputnik V,Omicron
+PID10258,38,Male,Asthma,"Cough,Fatigue",2021-04-11,2021-05-02,Recovered,False,False,Sputnik V,Alpha
+PID10259,60,Male,CKD,"Loss of smell,Fever",2021-05-29,2021-06-25,Recovered,False,False,Covaxin,Alpha
+PID10260,5,Male,Heart Disease,"Fever,Fatigue,Cough",2021-10-19,2021-10-30,Deceased,False,False,Sputnik V,Delta
+PID10261,86,Female,Obesity,"Fever,Breathlessness",2022-10-18,2022-11-09,Recovered,False,False,Sputnik V,Omicron
+PID10262,82,Female,"Obesity,Heart Disease","Fever,Body Ache",2023-08-19,2023-08-31,Recovered,False,False,Moderna,XBB
+PID10263,6,Female,"Diabetes,Hypertension",Asymptomatic,2022-11-14,2022-12-04,Recovered,False,False,Covishield,Omicron BA.2
+PID10264,26,Male,"Diabetes,Hypertension","Breathlessness,Chest Pain",2023-03-10,2023-04-04,Recovered,False,False,Sputnik V,Omicron
+PID10265,72,Female,"Diabetes,Hypertension","Cough,Fatigue",2020-09-01,2020-09-10,Recovered,False,False,Unvaccinated,Original
+PID10266,84,Female,CKD,"Fever,Cough",2020-05-14,2020-05-21,Recovered,False,False,Unvaccinated,Original
+PID10267,67,Male,Diabetes,"Fever,Body Ache",2021-10-17,2021-11-06,Recovered,False,False,Pfizer,Alpha
+PID10268,19,Female,"Obesity,Heart Disease","Fever,Body Ache",2021-06-05,2021-06-14,Recovered,False,False,Sputnik V,Alpha
+PID10269,32,Male,Asthma,"Fever,Body Ache",2022-03-05,2022-04-01,Recovered,False,False,Covaxin,Omicron
+PID10270,56,Male,CKD,"Fever,Fatigue,Cough",2021-06-19,2021-07-19,Recovered,False,False,Covishield,Delta
+PID10271,47,Male,CKD,"Fever,Body Ache",2020-03-21,2020-04-10,Recovered,False,False,Unvaccinated,Original
+PID10272,29,Male,CKD,"Fever,Cough",2022-07-19,2022-08-04,Recovered,False,False,Moderna,Omicron
+PID10273,36,Male,CKD,Asymptomatic,2022-01-09,2022-01-31,Recovered,False,False,Covaxin,Delta
+PID10274,52,Male,Asthma,"Loss of smell,Fever",2021-02-08,2021-02-25,Recovered,False,False,Sputnik V,Alpha
+PID10275,8,Female,Obesity,"Loss of smell,Fever",2021-11-05,2021-11-10,Recovered,False,False,Sputnik V,Alpha
+PID10276,87,Male,"Diabetes,Hypertension","Fever,Breathlessness",2022-10-15,2022-11-03,Recovered,False,False,Covishield,Omicron BA.2
+PID10277,9,Female,CKD,"Fever,Breathlessness",2020-03-29,2020-04-24,Recovered,False,False,Unvaccinated,Original
+PID10278,73,Male,"Diabetes,Hypertension","Cough,Fatigue",2022-07-17,2022-07-28,Recovered,False,False,Moderna,XBB
+PID10279,55,Male,Asthma,"Fever,Body Ache",2020-07-15,2020-07-27,Recovered,False,False,Unvaccinated,Original
+PID10280,88,Female,Diabetes,"Loss of smell,Fever",2023-01-26,2023-02-18,Recovered,False,False,Covishield,Omicron
+PID10281,89,Female,Diabetes,"Breathlessness,Chest Pain",2022-04-04,2022-04-20,Recovered,False,False,Covishield,Omicron
+PID10282,14,Female,Heart Disease,"Cough,Fatigue",2023-10-20,2023-11-14,Active,False,False,Covaxin,Omicron
+PID10283,62,Male,"Obesity,Heart Disease","Fever,Fatigue,Cough",2022-01-21,2022-02-18,Recovered,False,False,Covishield,Delta
+PID10284,52,Female,Hypertension,"Fever,Fatigue,Cough",2020-05-07,2020-05-17,Recovered,False,False,Unvaccinated,Original
+PID10285,61,Male,Heart Disease,"Fever,Body Ache",2022-11-13,2022-12-08,Recovered,False,False,Covishield,XBB
+PID10286,34,Male,Heart Disease,"Breathlessness,Chest Pain",2021-08-23,2021-09-15,Recovered,False,False,Covishield,Delta
+PID10287,71,Male,"Obesity,Heart Disease","Breathlessness,Chest Pain",2023-01-20,2023-02-15,Recovered,False,False,Covaxin,Omicron
+PID10288,53,Female,Hypertension,"Cough,Fatigue",2023-02-19,2023-03-05,Recovered,False,False,Moderna,Omicron
+PID10289,90,Male,Hypertension,"Fever,Fatigue,Cough",2022-05-01,2022-05-04,Recovered,False,False,Covishield,Omicron
+PID10290,20,Male,"Obesity,Heart Disease",Asymptomatic,2023-08-13,2023-09-09,Recovered,False,False,Moderna,Omicron BA.2
+PID10291,90,Male,None,"Cough,Fatigue",2021-05-03,2021-05-17,Recovered,True,False,Covaxin,Alpha
+PID10292,36,Male,Obesity,"Cough,Fatigue",2023-05-19,2023-06-07,Recovered,False,False,Sputnik V,Omicron
+PID10293,82,Male,Hypertension,"Fever,Fatigue,Cough",2021-03-13,2021-03-17,Recovered,False,False,Covishield,Beta
+PID10294,34,Female,"Diabetes,Hypertension","Fever,Breathlessness",2020-07-17,2020-07-26,Recovered,False,False,Unvaccinated,Original
+PID10295,11,Male,"Diabetes,Hypertension","Fever,Breathlessness",2023-03-19,2023-04-16,Recovered,False,False,Pfizer,Omicron
+PID10296,17,Male,CKD,"Fever,Breathlessness",2022-11-14,2022-11-23,Recovered,False,False,Covaxin,Omicron BA.2
+PID10297,87,Male,Heart Disease,"Fever,Body Ache",2022-09-07,2022-10-04,Recovered,False,False,Pfizer,XBB
+PID10298,68,Female,Heart Disease,"Fever,Fatigue,Cough",2023-07-29,2023-08-09,Recovered,False,False,Moderna,Omicron BA.2
+PID10299,48,Female,Diabetes,"Loss of smell,Fever",2023-03-09,2023-03-19,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10300,45,Male,Diabetes,"Fever,Body Ache",2022-12-08,2022-12-11,Recovered,False,False,Covishield,Omicron BA.2
+PID10301,61,Male,Obesity,Asymptomatic,2021-11-28,2021-12-04,Recovered,False,False,Covishield,Alpha
+PID10302,44,Female,Obesity,"Loss of smell,Fever",2021-12-04,2021-12-23,Recovered,False,False,Sputnik V,Delta
+PID10303,29,Male,Asthma,"Cough,Fatigue",2022-01-07,2022-01-15,Recovered,False,False,Moderna,Delta
+PID10304,58,Female,Asthma,"Loss of smell,Fever",2023-11-13,2023-12-05,Active,False,False,Pfizer,Omicron BA.2
+PID10305,50,Female,CKD,"Fever,Cough",2021-12-02,2021-12-15,Recovered,False,False,Pfizer,Omicron
+PID10306,57,Male,Obesity,Asymptomatic,2022-06-20,2022-06-24,Recovered,False,False,Covaxin,Omicron BA.2
+PID10307,52,Male,Obesity,"Cough,Fatigue",2021-08-21,2021-09-02,Recovered,False,False,Covaxin,Delta
+PID10308,14,Female,None,"Fever,Body Ache",2021-09-27,2021-10-03,Recovered,False,False,Sputnik V,Delta
+PID10309,40,Male,Asthma,"Fever,Fatigue,Cough",2022-12-07,2022-12-17,Recovered,False,False,Unvaccinated,Omicron
+PID10310,61,Male,Asthma,"Fever,Body Ache",2023-03-21,2023-04-04,Recovered,False,False,Sputnik V,Omicron
+PID10311,24,Female,Obesity,"Breathlessness,Chest Pain",2021-01-19,2021-02-18,Recovered,False,False,Unvaccinated,Beta
+PID10312,89,Male,Hypertension,"Fever,Breathlessness",2023-05-31,2023-06-20,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10313,51,Female,"Diabetes,Hypertension",Asymptomatic,2021-12-17,2022-01-16,Recovered,False,False,Covishield,Delta
+PID10314,47,Male,Hypertension,"Fever,Breathlessness",2022-10-14,2022-10-28,Recovered,False,False,Covaxin,Omicron BA.2
+PID10315,59,Male,"Obesity,Heart Disease","Breathlessness,Chest Pain",2023-10-21,2023-11-06,Active,False,False,Moderna,Omicron
+PID10316,60,Female,"Obesity,Heart Disease","Cough,Fatigue",2020-04-17,2020-05-08,Recovered,False,False,Unvaccinated,Original
+PID10317,47,Male,"Obesity,Heart Disease","Loss of smell,Fever",2021-10-14,2021-11-04,Recovered,False,False,Moderna,Alpha
+PID10318,16,Male,CKD,"Fever,Fatigue,Cough",2023-01-30,2023-03-01,Recovered,False,False,Covishield,XBB
+PID10319,24,Female,"Diabetes,Hypertension","Fever,Body Ache",2022-10-24,2022-11-10,Recovered,False,False,Moderna,XBB
+PID10320,78,Female,None,"Fever,Cough",2020-04-27,2020-05-12,Recovered,False,False,Unvaccinated,Original
+PID10321,59,Female,Obesity,"Breathlessness,Chest Pain",2021-06-19,2021-07-02,Recovered,False,False,Moderna,Delta
+PID10322,29,Male,"Obesity,Heart Disease","Fever,Cough",2023-06-09,2023-06-16,Recovered,False,False,Unvaccinated,Omicron
+PID10323,49,Female,Obesity,Asymptomatic,2020-11-30,2020-12-20,Recovered,False,False,Unvaccinated,Original
+PID10324,25,Male,Hypertension,"Cough,Fatigue",2021-05-02,2021-05-14,Recovered,False,False,Covaxin,Alpha
+PID10325,53,Male,CKD,"Fever,Cough",2020-11-22,2020-12-21,Recovered,False,False,Unvaccinated,Original
+PID10326,56,Male,Hypertension,"Fever,Breathlessness",2022-09-16,2022-10-03,Recovered,False,False,Unvaccinated,XBB
+PID10327,31,Female,CKD,Asymptomatic,2021-02-11,2021-03-10,Recovered,False,False,Covaxin,Beta
+PID10328,69,Male,None,"Fever,Body Ache",2021-05-19,2021-05-24,Recovered,False,False,Pfizer,Alpha
+PID10329,17,Female,Obesity,"Fever,Breathlessness",2022-07-23,2022-08-07,Recovered,False,False,Pfizer,Omicron
+PID10330,54,Female,None,"Loss of smell,Fever",2023-11-07,2023-11-30,Active,False,False,Sputnik V,Omicron BA.2
+PID10331,77,Male,Obesity,"Fever,Fatigue,Cough",2021-08-06,2021-08-14,Deceased,True,False,Unvaccinated,Delta
+PID10332,58,Male,Hypertension,"Breathlessness,Chest Pain",2022-04-15,2022-05-07,Recovered,False,False,Moderna,Delta
+PID10333,25,Female,Asthma,"Fever,Fatigue,Cough",2020-10-25,2020-11-22,Recovered,False,False,Unvaccinated,Original
+PID10334,8,Male,CKD,"Fever,Cough",2023-09-09,2023-09-22,Recovered,False,False,Unvaccinated,Omicron BA.2
+PID10335,81,Female,Obesity,"Fever,Breathlessness",2023-03-24,2023-04-08,Recovered,False,False,Unvaccinated,Omicron
+PID10336,19,Female,Hypertension,"Fever,Cough",2022-07-22,2022-07-27,Recovered,False,False,Moderna,Omicron BA.2
+PID10337,65,Female,Diabetes,"Cough,Fatigue",2021-12-12,2021-12-30,Recovered,False,False,Sputnik V,Omicron
+PID10338,78,Male,Diabetes,"Fever,Breathlessness",2022-12-19,2023-01-14,Recovered,False,False,Covishield,Omicron
+PID10339,83,Female,Asthma,"Cough,Fatigue",2022-06-20,2022-07-02,Recovered,False,False,Sputnik V,Omicron
+PID10340,71,Female,Asthma,"Loss of smell,Fever",2023-07-07,2023-07-26,Recovered,False,False,Covaxin,Omicron
+PID10341,9,Male,Hypertension,"Fever,Cough",2023-06-14,2023-07-10,Recovered,False,False,Unvaccinated,XBB
+PID10342,9,Female,None,"Cough,Fatigue",2021-01-01,2021-01-24,Recovered,False,False,Unvaccinated,Alpha
+PID10343,49,Female,Obesity,"Cough,Fatigue",2022-11-30,2022-12-30,Recovered,False,False,Pfizer,XBB
+PID10344,74,Female,Asthma,"Loss of smell,Fever",2023-09-08,2023-09-19,Recovered,False,False,Moderna,XBB
+PID10345,67,Female,"Obesity,Heart Disease","Fever,Fatigue,Cough",2021-08-19,2021-09-01,Recovered,False,False,Sputnik V,Alpha
+PID10346,51,Male,Diabetes,Asymptomatic,2020-07-22,2020-08-19,Deceased,False,False,Unvaccinated,Original
+PID10347,19,Female,"Diabetes,Hypertension","Fever,Body Ache",2022-10-07,2022-11-05,Recovered,False,False,Covaxin,Omicron
+PID10348,69,Male,Obesity,"Fever,Cough",2023-04-22,2023-04-27,Recovered,False,False,Covishield,XBB
+PID10349,50,Female,"Obesity,Heart Disease",Asymptomatic,2021-04-25,2021-05-21,Recovered,False,False,Moderna,Alpha
+PID10350,52,Male,Hypertension,"Fever,Body Ache",2023-03-07,2023-03-15,Recovered,False,False,Sputnik V,XBB
+PID10351,11,Female,"Diabetes,Hypertension","Cough,Fatigue",2021-05-03,2021-05-14,Recovered,False,False,Pfizer,Delta
+PID10352,43,Male,None,"Fever,Body Ache",2022-01-03,2022-01-10,Recovered,True,True,Covishield,Omicron
+PID10353,66,Female,Hypertension,"Fever,Body Ache",2020-12-27,2021-01-03,Recovered,False,False,Unvaccinated,Original
+PID10354,29,Male,CKD,"Fever,Breathlessness",2022-05-24,2022-06-14,Recovered,False,False,Covaxin,Delta
+PID10355,24,Male,Diabetes,"Fever,Fatigue,Cough",2023-06-27,2023-07-21,Recovered,False,False,Covaxin,Omicron BA.2
+PID10356,85,Male,"Obesity,Heart Disease","Cough,Fatigue",2023-02-21,2023-02-27,Recovered,False,False,Covaxin,Omicron BA.2
+PID10357,48,Female,Diabetes,"Cough,Fatigue",2021-01-23,2021-01-28,Recovered,False,False,Pfizer,Original
+PID10358,26,Male,"Obesity,Heart Disease","Fever,Breathlessness",2022-08-04,2022-08-25,Recovered,False,False,Covaxin,Omicron BA.2
+PID10359,82,Male,"Diabetes,Hypertension","Fever,Body Ache",2020-09-12,2020-10-08,Recovered,False,False,Unvaccinated,Original
+PID10360,86,Female,Heart Disease,"Breathlessness,Chest Pain",2022-07-26,2022-07-30,Recovered,False,False,Sputnik V,XBB
+PID10361,37,Female,Obesity,"Cough,Fatigue",2022-07-22,2022-08-15,Recovered,False,False,Sputnik V,Omicron
+PID10362,60,Female,"Obesity,Heart Disease","Fever,Body Ache",2021-06-11,2021-07-02,Recovered,False,False,Moderna,Delta
+PID10363,18,Male,Diabetes,"Fever,Breathlessness",2020-06-09,2020-07-01,Recovered,False,False,Unvaccinated,Original
+PID10364,79,Male,Asthma,"Cough,Fatigue",2021-07-16,2021-07-30,Recovered,False,False,Pfizer,Delta
+PID10365,71,Female,None,Asymptomatic,2022-10-14,2022-11-04,Recovered,False,False,Sputnik V,XBB
+PID10366,8,Male,"Diabetes,Hypertension","Fever,Fatigue,Cough",2023-05-20,2023-05-28,Recovered,False,False,Pfizer,Omicron BA.2
+PID10367,49,Male,Asthma,"Cough,Fatigue",2022-03-19,2022-04-17,Recovered,False,False,Pfizer,Omicron
+PID10368,25,Female,CKD,"Breathlessness,Chest Pain",2023-10-06,2023-10-17,Recovered,False,False,Sputnik V,XBB
+PID10369,68,Male,Asthma,"Fever,Fatigue,Cough",2021-03-02,2021-04-01,Recovered,False,False,Moderna,Beta
+PID10370,16,Female,Hypertension,"Fever,Body Ache",2020-10-08,2020-11-03,Recovered,False,False,Unvaccinated,Original
+PID10371,67,Male,Asthma,"Fever,Cough",2021-05-03,2021-05-14,Recovered,False,False,Covishield,Delta
+PID10372,79,Female,"Obesity,Heart Disease","Loss of smell,Fever",2020-10-29,2020-11-07,Recovered,False,False,Unvaccinated,Original
+PID10373,14,Female,Heart Disease,"Loss of smell,Fever",2022-06-08,2022-06-30,Recovered,False,False,Sputnik V,XBB
+PID10374,50,Female,Diabetes,"Breathlessness,Chest Pain",2022-02-09,2022-03-01,Recovered,False,False,Sputnik V,Delta
+PID10375,10,Female,Obesity,Asymptomatic,2021-06-18,2021-07-05,Recovered,False,False,Unvaccinated,Delta
+PID10376,61,Male,None,"Cough,Fatigue",2021-07-30,2021-08-09,Recovered,False,False,Covaxin,Alpha
+PID10377,76,Female,CKD,"Fever,Fatigue,Cough",2022-08-30,2022-09-15,Recovered,False,False,Covishield,Omicron BA.2
+PID10378,38,Female,Diabetes,"Loss of smell,Fever",2022-03-30,2022-04-27,Recovered,False,False,Covaxin,Delta
+PID10379,36,Female,"Obesity,Heart Disease","Breathlessness,Chest Pain",2022-01-02,2022-02-01,Recovered,False,False,Moderna,Delta
+PID10380,82,Male,"Diabetes,Hypertension","Fever,Fatigue,Cough",2020-10-15,2020-11-12,Recovered,False,False,Unvaccinated,Original
+PID10381,11,Male,Hypertension,"Fever,Cough",2023-06-04,2023-07-03,Recovered,False,False,Pfizer,XBB
+PID10382,76,Male,Diabetes,"Breathlessness,Chest Pain",2023-05-05,2023-05-22,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10383,40,Male,"Diabetes,Hypertension","Fever,Body Ache",2020-07-26,2020-08-21,Recovered,False,False,Unvaccinated,Original
+PID10384,32,Female,Asthma,Asymptomatic,2020-12-13,2020-12-28,Recovered,False,False,Unvaccinated,Beta
+PID10385,70,Female,None,"Fever,Cough",2023-05-26,2023-06-23,Recovered,False,False,Sputnik V,XBB
+PID10386,20,Female,Hypertension,Asymptomatic,2022-03-18,2022-04-08,Recovered,False,False,Moderna,Delta
+PID10387,27,Male,Asthma,"Fever,Breathlessness",2021-08-06,2021-08-28,Deceased,False,False,Sputnik V,Delta
+PID10388,78,Female,CKD,"Cough,Fatigue",2020-09-23,2020-10-08,Recovered,False,False,Unvaccinated,Original
+PID10389,48,Female,Heart Disease,"Cough,Fatigue",2020-12-23,2021-01-22,Recovered,False,False,Unvaccinated,Original
+PID10390,38,Male,Asthma,"Cough,Fatigue",2020-09-16,2020-09-24,Recovered,False,False,Unvaccinated,Original
+PID10391,37,Male,Asthma,"Fever,Breathlessness",2020-09-23,2020-10-12,Recovered,True,False,Unvaccinated,Original
+PID10392,72,Female,Diabetes,"Loss of smell,Fever",2021-02-23,2021-02-26,Recovered,True,True,Moderna,Beta
+PID10393,84,Male,Asthma,"Loss of smell,Fever",2021-04-05,2021-04-28,Recovered,False,False,Unvaccinated,Delta
+PID10394,27,Male,"Obesity,Heart Disease","Fever,Breathlessness",2022-09-03,2022-09-28,Recovered,False,False,Unvaccinated,Omicron BA.2
+PID10395,18,Female,Obesity,"Loss of smell,Fever",2021-12-13,2021-12-25,Recovered,False,False,Unvaccinated,Delta
+PID10396,63,Male,"Obesity,Heart Disease","Fever,Breathlessness",2023-08-22,2023-09-04,Recovered,False,False,Pfizer,Omicron BA.2
+PID10397,51,Female,None,"Breathlessness,Chest Pain",2022-02-05,2022-02-15,Recovered,False,False,Covishield,Omicron
+PID10398,89,Male,"Obesity,Heart Disease","Fever,Breathlessness",2020-07-13,2020-07-31,Recovered,False,False,Unvaccinated,Original
+PID10399,72,Male,Heart Disease,"Breathlessness,Chest Pain",2023-11-16,2023-11-29,Active,False,False,Pfizer,XBB
+PID10400,30,Female,CKD,"Fever,Breathlessness",2020-12-17,2021-01-03,Recovered,False,False,Unvaccinated,Alpha
+PID10401,67,Female,"Diabetes,Hypertension","Fever,Fatigue,Cough",2022-12-14,2022-12-17,Recovered,False,False,Pfizer,XBB
+PID10402,10,Male,Asthma,"Fever,Cough",2020-07-05,2020-07-24,Recovered,False,False,Unvaccinated,Original
+PID10403,11,Male,CKD,"Loss of smell,Fever",2023-03-14,2023-03-17,Recovered,False,False,Moderna,Omicron BA.2
+PID10404,10,Female,Diabetes,Asymptomatic,2023-01-20,2023-02-03,Recovered,False,False,Covishield,Omicron
+PID10405,78,Male,Heart Disease,"Fever,Cough",2022-12-24,2023-01-02,Deceased,False,False,Covishield,Omicron BA.2
+PID10406,47,Female,None,"Loss of smell,Fever",2021-07-20,2021-08-13,Recovered,False,False,Covaxin,Alpha
+PID10407,36,Female,Obesity,"Fever,Fatigue,Cough",2020-12-30,2021-01-21,Recovered,False,False,Unvaccinated,Alpha
+PID10408,6,Female,Heart Disease,"Fever,Cough",2022-07-01,2022-07-26,Recovered,False,False,Covishield,Omicron BA.2
+PID10409,55,Male,Diabetes,"Fever,Breathlessness",2023-09-19,2023-10-14,Recovered,False,False,Sputnik V,Omicron
+PID10410,67,Male,Heart Disease,"Fever,Body Ache",2020-11-06,2020-11-14,Recovered,False,False,Unvaccinated,Original
+PID10411,41,Female,Obesity,"Fever,Breathlessness",2021-10-19,2021-11-08,Recovered,False,False,Unvaccinated,Alpha
+PID10412,68,Female,Diabetes,"Fever,Breathlessness",2023-04-25,2023-05-25,Recovered,False,False,Pfizer,Omicron
+PID10413,54,Female,Asthma,"Cough,Fatigue",2021-06-26,2021-06-30,Recovered,False,False,Covishield,Alpha
+PID10414,81,Male,Obesity,"Breathlessness,Chest Pain",2021-01-01,2021-01-18,Recovered,False,False,Unvaccinated,Beta
+PID10415,6,Female,Hypertension,"Breathlessness,Chest Pain",2020-06-12,2020-07-03,Recovered,False,False,Unvaccinated,Original
+PID10416,87,Male,Obesity,"Loss of smell,Fever",2022-10-17,2022-10-26,Recovered,False,False,Moderna,Omicron BA.2
+PID10417,47,Male,"Obesity,Heart Disease","Fever,Fatigue,Cough",2023-09-20,2023-09-29,Recovered,False,False,Unvaccinated,Omicron BA.2
+PID10418,23,Male,CKD,"Fever,Cough",2023-04-29,2023-05-07,Recovered,False,False,Sputnik V,Omicron
+PID10419,26,Male,Obesity,"Fever,Cough",2023-09-02,2023-09-28,Recovered,False,False,Covishield,Omicron
+PID10420,77,Male,"Obesity,Heart Disease","Fever,Breathlessness",2022-05-04,2022-05-07,Recovered,False,False,Covishield,Delta
+PID10421,65,Female,CKD,"Cough,Fatigue",2020-04-24,2020-05-17,Recovered,False,False,Unvaccinated,Original
+PID10422,67,Male,"Diabetes,Hypertension","Breathlessness,Chest Pain",2021-07-14,2021-08-07,Recovered,False,False,Pfizer,Delta
+PID10423,41,Male,Asthma,"Fever,Cough",2021-06-16,2021-06-23,Recovered,False,False,Covaxin,Delta
+PID10424,43,Male,CKD,"Loss of smell,Fever",2022-08-16,2022-09-13,Recovered,False,False,Moderna,XBB
+PID10425,31,Female,"Diabetes,Hypertension","Fever,Body Ache",2023-09-19,2023-10-03,Recovered,False,False,Pfizer,Omicron BA.2
+PID10426,48,Male,Obesity,Asymptomatic,2022-10-20,2022-11-03,Recovered,False,False,Moderna,XBB
+PID10427,29,Female,Asthma,"Fever,Fatigue,Cough",2021-04-10,2021-05-01,Recovered,False,False,Pfizer,Delta
+PID10428,23,Female,None,Asymptomatic,2021-05-26,2021-06-10,Recovered,False,False,Covaxin,Delta
+PID10429,75,Female,None,Asymptomatic,2021-06-02,2021-06-15,Recovered,False,False,Covishield,Delta
+PID10430,90,Female,Obesity,"Loss of smell,Fever",2022-05-14,2022-06-04,Recovered,False,False,Sputnik V,Delta
+PID10431,64,Male,Diabetes,"Fever,Breathlessness",2022-07-05,2022-07-18,Recovered,False,False,Covaxin,Omicron BA.2
+PID10432,6,Female,Diabetes,"Breathlessness,Chest Pain",2020-09-06,2020-09-09,Recovered,False,False,Unvaccinated,Original
+PID10433,24,Female,"Diabetes,Hypertension","Cough,Fatigue",2022-03-15,2022-03-24,Recovered,False,False,Covaxin,Delta
+PID10434,27,Male,CKD,"Fever,Breathlessness",2022-02-06,2022-03-03,Recovered,False,False,Covishield,Delta
+PID10435,57,Female,Obesity,"Fever,Breathlessness",2023-03-10,2023-04-01,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10436,17,Female,CKD,"Cough,Fatigue",2021-01-09,2021-01-26,Recovered,False,False,Unvaccinated,Alpha
+PID10437,7,Male,"Diabetes,Hypertension","Fever,Cough",2021-02-27,2021-03-26,Recovered,False,False,Pfizer,Alpha
+PID10438,77,Male,Hypertension,"Loss of smell,Fever",2022-12-17,2023-01-10,Recovered,False,False,Covaxin,Omicron
+PID10439,55,Female,Heart Disease,"Fever,Breathlessness",2023-09-14,2023-09-26,Recovered,False,False,Covishield,XBB
+PID10440,68,Female,Obesity,"Fever,Fatigue,Cough",2022-03-11,2022-04-02,Recovered,True,False,Covaxin,Delta
+PID10441,67,Female,Heart Disease,"Cough,Fatigue",2023-02-13,2023-02-16,Recovered,False,False,Covishield,XBB
+PID10442,10,Male,Asthma,"Fever,Cough",2022-08-18,2022-08-31,Recovered,False,False,Pfizer,XBB
+PID10443,84,Female,CKD,"Fever,Body Ache",2020-12-07,2021-01-06,Recovered,True,False,Unvaccinated,Original
+PID10444,39,Female,CKD,"Breathlessness,Chest Pain",2020-05-27,2020-06-21,Recovered,False,False,Unvaccinated,Original
+PID10445,38,Male,"Diabetes,Hypertension","Fever,Breathlessness",2020-12-11,2020-12-25,Recovered,False,False,Unvaccinated,Alpha
+PID10446,70,Male,Diabetes,"Loss of smell,Fever",2021-12-27,2022-01-26,Deceased,False,False,Unvaccinated,Delta
+PID10447,24,Male,None,"Breathlessness,Chest Pain",2022-04-18,2022-04-23,Recovered,False,False,Unvaccinated,Delta
+PID10448,24,Female,Diabetes,"Fever,Breathlessness",2023-08-31,2023-09-05,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10449,22,Male,Hypertension,"Fever,Breathlessness",2020-07-08,2020-08-02,Recovered,False,False,Unvaccinated,Original
+PID10450,60,Male,Diabetes,"Fever,Body Ache",2020-09-18,2020-09-21,Recovered,False,False,Unvaccinated,Original
+PID10451,72,Male,"Diabetes,Hypertension","Fever,Fatigue,Cough",2021-12-31,2022-01-23,Recovered,False,False,Moderna,Omicron
+PID10452,12,Male,Heart Disease,"Loss of smell,Fever",2023-07-10,2023-08-09,Recovered,False,False,Covishield,Omicron
+PID10453,29,Male,Asthma,Asymptomatic,2023-03-30,2023-04-20,Recovered,False,False,Covishield,Omicron
+PID10454,86,Female,Obesity,"Fever,Body Ache",2021-02-10,2021-02-25,Recovered,False,False,Moderna,Alpha
+PID10455,49,Male,Diabetes,"Fever,Cough",2021-08-10,2021-09-08,Recovered,False,False,Covaxin,Delta
+PID10456,49,Female,Diabetes,"Cough,Fatigue",2020-07-21,2020-08-08,Recovered,False,False,Unvaccinated,Original
+PID10457,16,Female,Diabetes,"Fever,Fatigue,Cough",2020-04-08,2020-05-04,Recovered,False,False,Unvaccinated,Original
+PID10458,50,Female,Asthma,Asymptomatic,2021-12-28,2022-01-14,Recovered,False,False,Covaxin,Omicron
+PID10459,26,Female,"Diabetes,Hypertension","Cough,Fatigue",2021-06-25,2021-07-16,Recovered,True,True,Covaxin,Delta
+PID10460,23,Female,CKD,"Loss of smell,Fever",2022-09-27,2022-10-04,Recovered,False,False,Covishield,Omicron
+PID10461,6,Male,Obesity,"Fever,Breathlessness",2022-06-11,2022-06-25,Recovered,False,False,Covishield,Omicron
+PID10462,65,Male,"Diabetes,Hypertension","Fever,Body Ache",2020-04-17,2020-05-02,Recovered,False,False,Unvaccinated,Original
+PID10463,75,Female,CKD,"Fever,Body Ache",2021-02-02,2021-02-14,Recovered,False,False,Sputnik V,Beta
+PID10464,90,Female,Heart Disease,"Loss of smell,Fever",2021-02-05,2021-02-23,Recovered,False,False,Covaxin,Original
+PID10465,68,Male,Asthma,"Fever,Fatigue,Cough",2021-07-09,2021-07-28,Recovered,False,False,Covaxin,Alpha
+PID10466,83,Female,Hypertension,"Breathlessness,Chest Pain",2023-09-02,2023-09-18,Recovered,False,False,Covaxin,Omicron BA.2
+PID10467,13,Female,Obesity,"Breathlessness,Chest Pain",2023-05-16,2023-06-03,Recovered,False,False,Covishield,Omicron
+PID10468,40,Male,Hypertension,"Breathlessness,Chest Pain",2023-10-04,2023-10-22,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10469,34,Female,None,"Breathlessness,Chest Pain",2023-10-01,2023-10-22,Recovered,False,False,Pfizer,Omicron
+PID10470,54,Female,"Diabetes,Hypertension","Fever,Fatigue,Cough",2023-01-25,2023-01-31,Recovered,False,False,Moderna,Omicron
+PID10471,54,Female,Hypertension,"Breathlessness,Chest Pain",2020-07-30,2020-08-16,Recovered,False,False,Unvaccinated,Original
+PID10472,36,Female,"Diabetes,Hypertension","Loss of smell,Fever",2020-07-13,2020-07-31,Deceased,False,False,Unvaccinated,Original
+PID10473,67,Male,Diabetes,"Fever,Fatigue,Cough",2021-09-24,2021-10-07,Recovered,False,False,Sputnik V,Alpha
+PID10474,29,Male,CKD,"Fever,Body Ache",2020-07-17,2020-08-12,Recovered,False,False,Unvaccinated,Original
+PID10475,38,Male,CKD,"Fever,Breathlessness",2020-04-06,2020-04-18,Recovered,False,False,Unvaccinated,Original
+PID10476,23,Female,Asthma,"Fever,Breathlessness",2022-04-08,2022-04-25,Recovered,False,False,Moderna,Delta
+PID10477,40,Male,Asthma,"Fever,Cough",2021-09-26,2021-10-13,Recovered,False,False,Covishield,Delta
+PID10478,46,Female,CKD,"Fever,Cough",2020-11-23,2020-11-27,Recovered,False,False,Unvaccinated,Original
+PID10479,87,Female,Asthma,"Fever,Cough",2023-09-23,2023-10-09,Recovered,False,False,Unvaccinated,XBB
+PID10480,21,Male,"Obesity,Heart Disease","Loss of smell,Fever",2023-01-26,2023-01-30,Recovered,False,False,Covishield,Omicron
+PID10481,51,Male,"Diabetes,Hypertension","Fever,Body Ache",2021-07-09,2021-07-14,Recovered,False,False,Covaxin,Delta
+PID10482,72,Male,Obesity,"Cough,Fatigue",2023-04-05,2023-04-09,Recovered,False,False,Covishield,XBB
+PID10483,38,Male,None,Asymptomatic,2021-02-03,2021-02-09,Recovered,False,False,Moderna,Beta
+PID10484,10,Female,Asthma,"Fever,Body Ache",2022-11-20,2022-11-24,Recovered,False,False,Covishield,Omicron
+PID10485,55,Female,"Obesity,Heart Disease","Fever,Breathlessness",2023-10-05,2023-10-29,Recovered,False,False,Unvaccinated,Omicron BA.2
+PID10486,80,Female,None,"Breathlessness,Chest Pain",2020-06-05,2020-06-14,Recovered,False,False,Unvaccinated,Original
+PID10487,52,Female,Obesity,"Loss of smell,Fever",2020-08-27,2020-09-17,Recovered,False,False,Unvaccinated,Original
+PID10488,85,Female,Hypertension,Asymptomatic,2023-03-18,2023-03-21,Recovered,False,False,Covaxin,XBB
+PID10489,47,Female,"Diabetes,Hypertension","Fever,Cough",2023-08-11,2023-08-22,Recovered,False,False,Unvaccinated,Omicron BA.2
+PID10490,88,Male,None,"Fever,Body Ache",2022-09-13,2022-10-05,Recovered,False,False,Covishield,Omicron
+PID10491,31,Female,Obesity,"Fever,Fatigue,Cough",2020-10-19,2020-11-14,Recovered,False,False,Unvaccinated,Original
+PID10492,11,Male,Heart Disease,"Fever,Cough",2022-03-24,2022-04-10,Recovered,False,False,Covishield,Omicron
+PID10493,28,Female,"Diabetes,Hypertension","Fever,Body Ache",2021-06-01,2021-06-30,Recovered,False,False,Sputnik V,Delta
+PID10494,26,Male,Diabetes,"Fever,Breathlessness",2023-07-30,2023-08-26,Recovered,False,False,Covaxin,XBB
+PID10495,8,Female,None,"Fever,Fatigue,Cough",2020-03-15,2020-04-14,Recovered,False,False,Unvaccinated,Original
+PID10496,77,Male,CKD,"Breathlessness,Chest Pain",2022-09-12,2022-09-27,Recovered,False,False,Covishield,Omicron BA.2
+PID10497,58,Male,Diabetes,"Fever,Fatigue,Cough",2020-08-17,2020-08-28,Recovered,False,False,Unvaccinated,Original
+PID10498,63,Male,None,"Cough,Fatigue",2020-12-30,2021-01-10,Recovered,False,False,Unvaccinated,Original
+PID10499,19,Female,Heart Disease,"Fever,Cough",2021-03-07,2021-03-10,Recovered,False,False,Sputnik V,Beta
+PID10500,13,Female,None,"Fever,Cough",2023-05-12,2023-05-30,Recovered,False,False,Pfizer,Omicron
+PID10501,64,Male,Heart Disease,"Fever,Fatigue,Cough",2022-12-28,2023-01-13,Recovered,False,False,Unvaccinated,XBB
+PID10502,39,Female,None,"Fever,Cough",2022-11-21,2022-11-30,Recovered,False,False,Covishield,Omicron
+PID10503,60,Male,Heart Disease,"Breathlessness,Chest Pain",2023-05-12,2023-06-10,Recovered,False,False,Sputnik V,Omicron
+PID10504,52,Male,Asthma,"Breathlessness,Chest Pain",2020-09-12,2020-10-04,Recovered,False,False,Unvaccinated,Original
+PID10505,23,Female,Asthma,"Cough,Fatigue",2023-04-17,2023-05-07,Recovered,False,False,Covishield,Omicron BA.2
+PID10506,42,Female,Asthma,"Fever,Body Ache",2022-02-24,2022-03-23,Recovered,False,False,Sputnik V,Omicron
+PID10507,37,Female,"Diabetes,Hypertension","Cough,Fatigue",2020-09-08,2020-09-30,Recovered,False,False,Unvaccinated,Original
+PID10508,26,Female,"Obesity,Heart Disease","Loss of smell,Fever",2023-03-24,2023-04-23,Recovered,False,False,Covishield,XBB
+PID10509,31,Male,"Obesity,Heart Disease","Fever,Breathlessness",2023-06-02,2023-06-09,Recovered,False,False,Unvaccinated,Omicron BA.2
+PID10510,37,Male,Asthma,"Cough,Fatigue",2023-06-06,2023-06-09,Recovered,False,False,Sputnik V,Omicron
+PID10511,52,Female,Obesity,"Breathlessness,Chest Pain",2020-11-09,2020-11-22,Recovered,False,False,Unvaccinated,Original
+PID10512,18,Male,None,"Fever,Breathlessness",2022-06-28,2022-07-23,Recovered,False,False,Sputnik V,Omicron
+PID10513,14,Male,"Obesity,Heart Disease","Fever,Breathlessness",2022-12-24,2022-12-31,Recovered,False,False,Covaxin,Omicron BA.2
+PID10514,7,Female,"Diabetes,Hypertension","Fever,Breathlessness",2021-04-10,2021-04-13,Deceased,True,True,Unvaccinated,Alpha
+PID10515,89,Female,Asthma,Asymptomatic,2022-07-27,2022-08-10,Recovered,False,False,Covaxin,Omicron BA.2
+PID10516,84,Female,None,"Cough,Fatigue",2021-11-27,2021-12-13,Recovered,False,False,Sputnik V,Alpha
+PID10517,8,Male,CKD,"Breathlessness,Chest Pain",2021-12-29,2022-01-12,Recovered,False,False,Moderna,Omicron
+PID10518,53,Female,"Obesity,Heart Disease","Fever,Breathlessness",2022-12-14,2022-12-17,Recovered,False,False,Pfizer,Omicron
+PID10519,85,Female,Obesity,"Cough,Fatigue",2020-08-31,2020-09-10,Recovered,False,False,Unvaccinated,Original
+PID10520,44,Female,Obesity,"Fever,Body Ache",2020-05-24,2020-06-06,Recovered,False,False,Unvaccinated,Original
+PID10521,21,Male,"Obesity,Heart Disease","Cough,Fatigue",2020-09-25,2020-09-28,Recovered,False,False,Unvaccinated,Original
+PID10522,28,Female,"Obesity,Heart Disease","Fever,Cough",2020-08-03,2020-08-22,Recovered,False,False,Unvaccinated,Original
+PID10523,20,Male,None,"Fever,Fatigue,Cough",2021-08-15,2021-09-05,Recovered,False,False,Covaxin,Delta
+PID10524,59,Female,"Diabetes,Hypertension",Asymptomatic,2023-07-29,2023-08-11,Recovered,False,False,Covishield,Omicron
+PID10525,88,Male,Heart Disease,"Loss of smell,Fever",2020-03-26,2020-04-10,Recovered,False,False,Unvaccinated,Original
+PID10526,79,Male,Diabetes,"Loss of smell,Fever",2021-06-15,2021-06-28,Recovered,False,False,Sputnik V,Delta
+PID10527,82,Female,None,"Breathlessness,Chest Pain",2020-12-25,2021-01-01,Recovered,False,False,Unvaccinated,Alpha
+PID10528,18,Female,Diabetes,"Fever,Breathlessness",2023-10-06,2023-10-26,Deceased,False,False,Moderna,Omicron BA.2
+PID10529,90,Male,Hypertension,"Fever,Breathlessness",2020-09-09,2020-09-20,Recovered,False,False,Unvaccinated,Original
+PID10530,16,Female,"Obesity,Heart Disease","Breathlessness,Chest Pain",2020-05-03,2020-05-11,Recovered,False,False,Unvaccinated,Original
+PID10531,66,Female,Diabetes,"Fever,Cough",2023-04-30,2023-05-11,Recovered,False,False,Moderna,Omicron
+PID10532,23,Female,None,"Fever,Cough",2021-07-03,2021-07-12,Recovered,False,False,Unvaccinated,Delta
+PID10533,90,Female,Hypertension,"Breathlessness,Chest Pain",2020-10-31,2020-11-19,Recovered,False,False,Unvaccinated,Original
+PID10534,66,Female,Obesity,"Fever,Breathlessness",2021-07-27,2021-08-26,Recovered,False,False,Pfizer,Delta
+PID10535,75,Male,"Obesity,Heart Disease","Loss of smell,Fever",2021-03-03,2021-03-18,Recovered,False,False,Covishield,Original
+PID10536,70,Male,Obesity,"Fever,Body Ache",2020-08-01,2020-08-19,Recovered,False,False,Unvaccinated,Original
+PID10537,33,Female,CKD,"Fever,Cough",2023-09-17,2023-10-01,Recovered,False,False,Unvaccinated,Omicron BA.2
+PID10538,52,Male,"Diabetes,Hypertension","Fever,Body Ache",2021-04-13,2021-05-07,Recovered,False,False,Sputnik V,Alpha
+PID10539,86,Male,CKD,"Fever,Cough",2023-10-29,2023-11-28,Active,False,False,Pfizer,Omicron BA.2
+PID10540,76,Male,Asthma,"Fever,Fatigue,Cough",2022-07-17,2022-07-22,Recovered,False,False,Sputnik V,Omicron
+PID10541,64,Female,Heart Disease,"Cough,Fatigue",2022-05-29,2022-06-09,Recovered,False,False,Covaxin,Omicron
+PID10542,54,Male,"Diabetes,Hypertension","Breathlessness,Chest Pain",2023-01-26,2023-02-13,Recovered,False,False,Sputnik V,XBB
+PID10543,67,Male,Heart Disease,"Fever,Fatigue,Cough",2020-09-17,2020-10-12,Recovered,False,False,Unvaccinated,Original
+PID10544,41,Male,Asthma,"Fever,Fatigue,Cough",2021-09-21,2021-10-21,Recovered,False,False,Covishield,Delta
+PID10545,47,Female,Obesity,"Loss of smell,Fever",2021-04-11,2021-05-10,Recovered,False,False,Moderna,Delta
+PID10546,51,Male,Diabetes,"Fever,Fatigue,Cough",2021-11-09,2021-11-18,Recovered,False,False,Pfizer,Alpha
+PID10547,31,Female,Asthma,Asymptomatic,2023-10-13,2023-10-23,Active,False,False,Covishield,Omicron BA.2
+PID10548,39,Female,Diabetes,"Fever,Fatigue,Cough",2022-05-26,2022-06-13,Recovered,False,False,Covishield,Omicron
+PID10549,75,Male,Heart Disease,"Cough,Fatigue",2020-11-24,2020-12-09,Deceased,False,False,Unvaccinated,Original
+PID10550,79,Female,None,"Fever,Body Ache",2022-10-02,2022-10-22,Recovered,False,False,Covishield,Omicron BA.2
+PID10551,81,Male,Hypertension,"Fever,Breathlessness",2023-09-22,2023-10-10,Recovered,False,False,Unvaccinated,Omicron BA.2
+PID10552,11,Female,Hypertension,"Fever,Breathlessness",2022-03-25,2022-04-21,Recovered,False,False,Moderna,Delta
+PID10553,10,Female,Heart Disease,"Fever,Fatigue,Cough",2022-07-29,2022-08-07,Recovered,False,False,Unvaccinated,Omicron
+PID10554,34,Female,Obesity,"Loss of smell,Fever",2022-08-12,2022-08-22,Recovered,False,False,Moderna,Omicron BA.2
+PID10555,79,Female,Obesity,"Fever,Cough",2020-05-01,2020-05-21,Recovered,False,False,Unvaccinated,Original
+PID10556,78,Male,Diabetes,Asymptomatic,2021-02-06,2021-02-11,Recovered,False,False,Pfizer,Alpha
+PID10557,35,Female,Diabetes,"Fever,Cough",2022-06-25,2022-07-05,Recovered,False,False,Covishield,Omicron
+PID10558,44,Male,Obesity,"Fever,Breathlessness",2021-07-17,2021-08-10,Recovered,False,False,Pfizer,Delta
+PID10559,61,Female,CKD,"Fever,Cough",2020-08-29,2020-09-14,Recovered,False,False,Unvaccinated,Original
+PID10560,39,Female,Asthma,"Fever,Cough",2023-03-28,2023-04-24,Recovered,False,False,Moderna,Omicron BA.2
+PID10561,83,Male,Diabetes,"Fever,Body Ache",2023-01-01,2023-01-20,Recovered,False,False,Covaxin,Omicron
+PID10562,56,Male,Heart Disease,Asymptomatic,2021-02-22,2021-03-22,Recovered,False,False,Covaxin,Alpha
+PID10563,65,Male,"Diabetes,Hypertension","Fever,Cough",2022-05-01,2022-05-23,Recovered,False,False,Sputnik V,Delta
+PID10564,49,Female,CKD,"Fever,Breathlessness",2022-05-20,2022-06-10,Deceased,False,False,Sputnik V,Omicron
+PID10565,49,Male,Hypertension,Asymptomatic,2022-08-27,2022-09-07,Recovered,False,False,Pfizer,Omicron BA.2
+PID10566,71,Female,None,Asymptomatic,2023-06-27,2023-07-20,Recovered,False,False,Pfizer,Omicron
+PID10567,25,Male,Heart Disease,"Fever,Breathlessness",2020-09-15,2020-10-10,Recovered,False,False,Unvaccinated,Original
+PID10568,62,Male,Obesity,"Fever,Body Ache",2023-02-23,2023-03-06,Recovered,False,False,Covaxin,Omicron BA.2
+PID10569,71,Female,CKD,"Loss of smell,Fever",2021-12-13,2021-12-21,Recovered,True,False,Covaxin,Delta
+PID10570,30,Male,"Obesity,Heart Disease","Fever,Breathlessness",2021-07-11,2021-07-14,Recovered,False,False,Covaxin,Alpha
+PID10571,52,Male,Asthma,"Loss of smell,Fever",2022-10-18,2022-11-07,Recovered,False,False,Covishield,Omicron
+PID10572,7,Male,None,"Cough,Fatigue",2021-09-23,2021-10-12,Recovered,False,False,Covishield,Delta
+PID10573,21,Female,"Diabetes,Hypertension",Asymptomatic,2021-01-28,2021-02-27,Recovered,False,False,Moderna,Alpha
+PID10574,19,Male,CKD,"Loss of smell,Fever",2022-10-02,2022-10-10,Recovered,False,False,Unvaccinated,XBB
+PID10575,63,Female,"Obesity,Heart Disease","Fever,Body Ache",2020-03-16,2020-03-28,Recovered,False,False,Unvaccinated,Original
+PID10576,87,Female,Heart Disease,"Fever,Body Ache",2023-02-23,2023-03-12,Recovered,False,False,Moderna,XBB
+PID10577,68,Female,Heart Disease,"Fever,Breathlessness",2021-02-19,2021-03-10,Deceased,False,False,Moderna,Original
+PID10578,53,Male,None,Asymptomatic,2023-08-04,2023-08-20,Recovered,False,False,Pfizer,Omicron BA.2
+PID10579,86,Male,Heart Disease,"Fever,Body Ache",2022-08-23,2022-09-19,Recovered,False,False,Sputnik V,XBB
+PID10580,7,Female,"Diabetes,Hypertension","Cough,Fatigue",2021-07-28,2021-08-04,Recovered,False,False,Pfizer,Delta
+PID10581,64,Male,Heart Disease,"Breathlessness,Chest Pain",2022-04-14,2022-04-23,Recovered,False,False,Covishield,Delta
+PID10582,64,Female,Diabetes,"Fever,Fatigue,Cough",2020-07-01,2020-07-15,Recovered,False,False,Unvaccinated,Original
+PID10583,70,Female,Asthma,Asymptomatic,2022-03-11,2022-04-09,Recovered,False,False,Unvaccinated,Omicron
+PID10584,26,Male,"Obesity,Heart Disease",Asymptomatic,2021-12-10,2021-12-29,Recovered,True,True,Unvaccinated,Omicron
+PID10585,52,Female,Asthma,"Fever,Fatigue,Cough",2023-09-27,2023-10-16,Recovered,False,False,Pfizer,XBB
+PID10586,71,Male,"Obesity,Heart Disease","Fever,Breathlessness",2022-04-07,2022-04-11,Recovered,False,False,Pfizer,Omicron
+PID10587,53,Female,Hypertension,"Loss of smell,Fever",2021-01-23,2021-02-21,Recovered,False,False,Sputnik V,Beta
+PID10588,83,Female,None,"Loss of smell,Fever",2021-04-21,2021-04-26,Recovered,False,False,Unvaccinated,Alpha
+PID10589,77,Female,Obesity,"Fever,Cough",2021-04-17,2021-05-03,Recovered,False,False,Pfizer,Alpha
+PID10590,9,Male,Obesity,"Cough,Fatigue",2020-07-28,2020-08-05,Recovered,False,False,Unvaccinated,Original
+PID10591,68,Female,"Diabetes,Hypertension","Fever,Fatigue,Cough",2021-02-17,2021-03-13,Recovered,False,False,Moderna,Alpha
+PID10592,75,Female,"Obesity,Heart Disease","Loss of smell,Fever",2023-06-09,2023-06-29,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10593,40,Male,CKD,"Cough,Fatigue",2023-07-05,2023-07-24,Recovered,False,False,Covishield,Omicron
+PID10594,70,Female,Heart Disease,"Fever,Breathlessness",2021-09-23,2021-10-06,Recovered,False,False,Unvaccinated,Delta
+PID10595,33,Female,Hypertension,"Fever,Breathlessness",2021-01-12,2021-02-01,Recovered,False,False,Unvaccinated,Original
+PID10596,51,Female,Diabetes,Asymptomatic,2023-03-30,2023-04-18,Recovered,False,False,Covaxin,XBB
+PID10597,66,Female,CKD,"Fever,Body Ache",2021-02-10,2021-03-04,Recovered,False,False,Unvaccinated,Alpha
+PID10598,65,Female,Obesity,"Cough,Fatigue",2021-01-24,2021-02-09,Recovered,False,False,Unvaccinated,Alpha
+PID10599,80,Male,Hypertension,"Breathlessness,Chest Pain",2022-12-17,2023-01-01,Recovered,False,False,Covaxin,Omicron
+PID10600,46,Male,None,"Loss of smell,Fever",2021-02-04,2021-02-26,Recovered,False,False,Unvaccinated,Original
+PID10601,68,Male,None,"Fever,Cough",2023-03-26,2023-04-11,Recovered,False,False,Sputnik V,XBB
+PID10602,9,Female,Diabetes,"Fever,Cough",2022-11-05,2022-11-13,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10603,47,Male,Obesity,"Loss of smell,Fever",2021-02-16,2021-02-28,Recovered,False,False,Unvaccinated,Original
+PID10604,67,Female,Hypertension,"Fever,Breathlessness",2022-05-24,2022-06-22,Recovered,False,False,Moderna,Delta
+PID10605,38,Female,Obesity,"Fever,Fatigue,Cough",2022-10-17,2022-11-08,Recovered,False,False,Unvaccinated,XBB
+PID10606,48,Female,Asthma,"Fever,Fatigue,Cough",2020-05-19,2020-06-03,Recovered,False,False,Unvaccinated,Original
+PID10607,56,Female,Obesity,Asymptomatic,2021-11-06,2021-11-29,Recovered,False,False,Sputnik V,Delta
+PID10608,24,Male,"Diabetes,Hypertension","Loss of smell,Fever",2022-10-15,2022-10-22,Recovered,False,False,Covishield,Omicron
+PID10609,14,Male,"Diabetes,Hypertension","Fever,Body Ache",2021-01-14,2021-02-09,Recovered,False,False,Unvaccinated,Alpha
+PID10610,87,Female,Obesity,"Cough,Fatigue",2022-07-02,2022-07-08,Recovered,False,False,Moderna,XBB
+PID10611,51,Male,Heart Disease,"Fever,Body Ache",2023-11-18,2023-11-22,Active,False,False,Unvaccinated,Omicron
+PID10612,68,Male,Asthma,"Fever,Body Ache",2021-04-01,2021-04-30,Recovered,False,False,Pfizer,Delta
+PID10613,77,Female,Diabetes,"Cough,Fatigue",2023-11-23,2023-12-06,Active,False,False,Covaxin,Omicron
+PID10614,10,Male,Hypertension,"Fever,Body Ache",2022-01-29,2022-02-05,Recovered,False,False,Covaxin,Omicron
+PID10615,6,Female,Asthma,"Fever,Cough",2020-06-01,2020-06-28,Recovered,False,False,Unvaccinated,Original
+PID10616,69,Female,"Obesity,Heart Disease","Fever,Body Ache",2020-10-15,2020-11-02,Recovered,False,False,Unvaccinated,Original
+PID10617,83,Female,"Obesity,Heart Disease","Fever,Fatigue,Cough",2023-03-02,2023-03-23,Recovered,False,False,Unvaccinated,XBB
+PID10618,63,Male,"Diabetes,Hypertension","Fever,Body Ache",2023-03-23,2023-04-19,Recovered,False,False,Moderna,Omicron BA.2
+PID10619,78,Female,Heart Disease,"Fever,Fatigue,Cough",2022-10-20,2022-11-11,Recovered,False,False,Covishield,XBB
+PID10620,9,Female,Heart Disease,"Fever,Cough",2023-11-10,2023-12-10,Active,False,False,Covaxin,XBB
+PID10621,10,Male,CKD,"Fever,Cough",2023-03-06,2023-03-16,Recovered,False,False,Pfizer,Omicron
+PID10622,40,Female,None,"Fever,Fatigue,Cough",2020-08-17,2020-09-14,Recovered,False,False,Unvaccinated,Original
+PID10623,11,Female,Diabetes,Asymptomatic,2023-07-27,2023-08-20,Recovered,False,False,Sputnik V,XBB
+PID10624,47,Female,Diabetes,"Breathlessness,Chest Pain",2022-05-20,2022-06-09,Recovered,False,False,Sputnik V,Delta
+PID10625,66,Female,Hypertension,"Fever,Fatigue,Cough",2023-10-30,2023-11-09,Active,False,False,Sputnik V,XBB
+PID10626,25,Male,Heart Disease,"Fever,Fatigue,Cough",2021-08-23,2021-09-08,Recovered,False,False,Covaxin,Alpha
+PID10627,75,Male,Obesity,"Fever,Breathlessness",2023-03-30,2023-04-24,Recovered,False,False,Unvaccinated,Omicron
+PID10628,19,Male,"Diabetes,Hypertension","Fever,Fatigue,Cough",2021-09-19,2021-09-27,Recovered,False,False,Moderna,Delta
+PID10629,16,Male,"Obesity,Heart Disease","Fever,Fatigue,Cough",2020-09-01,2020-09-15,Recovered,False,False,Unvaccinated,Original
+PID10630,16,Female,Hypertension,Asymptomatic,2020-04-21,2020-05-13,Recovered,False,False,Unvaccinated,Original
+PID10631,85,Male,"Obesity,Heart Disease","Fever,Body Ache",2022-11-20,2022-12-17,Recovered,False,False,Pfizer,Omicron BA.2
+PID10632,29,Male,"Diabetes,Hypertension","Cough,Fatigue",2021-05-23,2021-05-31,Recovered,False,False,Sputnik V,Alpha
+PID10633,87,Male,None,"Breathlessness,Chest Pain",2022-05-17,2022-05-30,Recovered,False,False,Pfizer,Delta
+PID10634,52,Male,Asthma,"Cough,Fatigue",2020-04-19,2020-05-13,Recovered,False,False,Unvaccinated,Original
+PID10635,17,Male,Hypertension,"Cough,Fatigue",2020-09-05,2020-09-12,Recovered,False,False,Unvaccinated,Original
+PID10636,75,Female,Obesity,"Fever,Fatigue,Cough",2022-12-22,2023-01-11,Recovered,False,False,Unvaccinated,XBB
+PID10637,59,Male,Heart Disease,"Fever,Body Ache",2023-03-19,2023-04-17,Recovered,False,False,Covaxin,Omicron
+PID10638,48,Male,"Diabetes,Hypertension","Fever,Fatigue,Cough",2021-01-22,2021-02-02,Recovered,False,False,Covaxin,Beta
+PID10639,7,Male,Asthma,"Fever,Breathlessness",2021-11-19,2021-12-05,Deceased,True,True,Covishield,Alpha
+PID10640,47,Male,Diabetes,Asymptomatic,2020-09-25,2020-10-06,Recovered,False,False,Unvaccinated,Original
+PID10641,44,Male,"Obesity,Heart Disease","Fever,Fatigue,Cough",2020-06-23,2020-07-04,Recovered,False,False,Unvaccinated,Original
+PID10642,43,Female,Diabetes,"Breathlessness,Chest Pain",2023-04-20,2023-05-14,Recovered,False,False,Covaxin,Omicron
+PID10643,11,Female,None,"Cough,Fatigue",2021-09-17,2021-10-13,Recovered,False,False,Unvaccinated,Alpha
+PID10644,74,Female,Hypertension,"Loss of smell,Fever",2022-03-24,2022-04-08,Recovered,False,False,Unvaccinated,Delta
+PID10645,18,Male,Hypertension,Asymptomatic,2023-11-03,2023-11-24,Active,False,False,Sputnik V,Omicron
+PID10646,71,Female,"Obesity,Heart Disease",Asymptomatic,2022-06-28,2022-07-01,Recovered,False,False,Covishield,XBB
+PID10647,32,Female,Asthma,"Loss of smell,Fever",2020-07-14,2020-07-30,Recovered,False,False,Unvaccinated,Original
+PID10648,57,Male,CKD,"Fever,Fatigue,Cough",2022-06-21,2022-07-12,Recovered,False,False,Moderna,Omicron
+PID10649,68,Female,Hypertension,"Loss of smell,Fever",2023-11-02,2023-11-24,Active,False,False,Covishield,XBB
+PID10650,20,Male,Obesity,"Fever,Cough",2023-10-18,2023-11-08,Active,False,False,Unvaccinated,XBB
+PID10651,55,Male,None,Asymptomatic,2020-08-09,2020-09-02,Recovered,False,False,Unvaccinated,Original
+PID10652,6,Female,Hypertension,"Loss of smell,Fever",2020-10-27,2020-11-25,Recovered,False,False,Unvaccinated,Original
+PID10653,20,Female,"Diabetes,Hypertension",Asymptomatic,2023-11-02,2023-11-30,Active,False,False,Pfizer,Omicron BA.2
+PID10654,31,Male,"Diabetes,Hypertension","Cough,Fatigue",2023-10-06,2023-10-13,Recovered,False,False,Sputnik V,XBB
+PID10655,11,Male,"Diabetes,Hypertension","Fever,Fatigue,Cough",2021-09-26,2021-10-12,Recovered,False,False,Unvaccinated,Alpha
+PID10656,19,Female,None,"Cough,Fatigue",2021-05-06,2021-05-22,Recovered,False,False,Covishield,Delta
+PID10657,80,Male,Heart Disease,"Cough,Fatigue",2023-03-04,2023-03-09,Recovered,False,False,Pfizer,Omicron
+PID10658,25,Male,"Diabetes,Hypertension","Fever,Body Ache",2022-05-23,2022-06-03,Recovered,False,False,Unvaccinated,Delta
+PID10659,70,Female,"Obesity,Heart Disease","Fever,Fatigue,Cough",2021-06-06,2021-06-26,Recovered,False,False,Sputnik V,Delta
+PID10660,89,Female,None,"Fever,Breathlessness",2020-10-03,2020-10-14,Recovered,False,False,Unvaccinated,Original
+PID10661,35,Male,"Diabetes,Hypertension","Fever,Cough",2023-05-20,2023-05-26,Recovered,False,False,Sputnik V,Omicron
+PID10662,46,Female,None,"Cough,Fatigue",2021-01-14,2021-01-17,Recovered,False,False,Unvaccinated,Alpha
+PID10663,18,Female,Obesity,"Fever,Body Ache",2021-04-15,2021-04-23,Recovered,False,False,Covaxin,Delta
+PID10664,77,Male,Asthma,"Fever,Cough",2023-07-30,2023-08-20,Recovered,False,False,Covishield,XBB
+PID10665,65,Female,"Obesity,Heart Disease","Fever,Cough",2022-02-01,2022-02-15,Recovered,False,False,Covishield,Omicron
+PID10666,77,Male,Obesity,"Cough,Fatigue",2020-08-18,2020-08-24,Recovered,False,False,Unvaccinated,Original
+PID10667,14,Male,Obesity,Asymptomatic,2022-07-07,2022-07-27,Recovered,False,False,Pfizer,XBB
+PID10668,17,Female,Obesity,"Fever,Breathlessness",2021-06-05,2021-06-19,Recovered,True,True,Covaxin,Alpha
+PID10669,83,Female,Heart Disease,"Loss of smell,Fever",2022-02-10,2022-02-20,Recovered,False,False,Unvaccinated,Delta
+PID10670,5,Female,Diabetes,"Fever,Breathlessness",2023-11-21,2023-12-18,Active,False,False,Pfizer,Omicron
+PID10671,34,Female,Asthma,"Cough,Fatigue",2023-01-10,2023-01-31,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10672,26,Male,Heart Disease,Asymptomatic,2023-04-28,2023-05-23,Recovered,False,False,Moderna,XBB
+PID10673,25,Male,Obesity,"Loss of smell,Fever",2021-03-02,2021-03-31,Recovered,False,False,Covishield,Original
+PID10674,12,Male,Obesity,"Breathlessness,Chest Pain",2021-11-09,2021-11-26,Recovered,False,False,Unvaccinated,Alpha
+PID10675,43,Male,"Diabetes,Hypertension","Fever,Body Ache",2023-09-20,2023-10-17,Recovered,False,False,Unvaccinated,XBB
+PID10676,52,Female,Diabetes,"Fever,Breathlessness",2020-03-30,2020-04-07,Recovered,False,False,Unvaccinated,Original
+PID10677,14,Male,Heart Disease,"Breathlessness,Chest Pain",2021-01-31,2021-02-09,Recovered,False,False,Sputnik V,Original
+PID10678,81,Male,"Diabetes,Hypertension","Fever,Fatigue,Cough",2022-09-28,2022-10-06,Recovered,False,False,Pfizer,Omicron BA.2
+PID10679,82,Female,Heart Disease,"Fever,Body Ache",2021-12-21,2022-01-01,Recovered,False,False,Covishield,Delta
+PID10680,16,Male,Obesity,"Fever,Breathlessness",2023-03-16,2023-04-02,Recovered,False,False,Covishield,XBB
+PID10681,55,Male,"Obesity,Heart Disease","Loss of smell,Fever",2023-05-06,2023-05-24,Recovered,False,False,Covishield,XBB
+PID10682,21,Male,Obesity,"Fever,Breathlessness",2023-03-23,2023-04-02,Recovered,False,False,Moderna,XBB
+PID10683,73,Male,CKD,"Cough,Fatigue",2022-02-07,2022-02-26,Recovered,False,False,Covishield,Delta
+PID10684,33,Female,Diabetes,"Fever,Body Ache",2021-05-09,2021-05-16,Recovered,False,False,Moderna,Alpha
+PID10685,15,Female,Asthma,"Fever,Cough",2023-10-04,2023-10-24,Recovered,False,False,Sputnik V,Omicron
+PID10686,6,Male,None,"Fever,Breathlessness",2020-05-21,2020-06-17,Recovered,False,False,Unvaccinated,Original
+PID10687,86,Male,"Diabetes,Hypertension","Breathlessness,Chest Pain",2022-01-04,2022-01-12,Recovered,False,False,Pfizer,Delta
+PID10688,85,Male,Asthma,"Breathlessness,Chest Pain",2020-07-10,2020-08-07,Recovered,False,False,Unvaccinated,Original
+PID10689,19,Female,Hypertension,"Fever,Breathlessness",2022-04-30,2022-05-24,Recovered,False,False,Covaxin,Omicron
+PID10690,23,Female,"Obesity,Heart Disease","Fever,Breathlessness",2023-04-06,2023-05-05,Recovered,False,False,Covaxin,Omicron BA.2
+PID10691,41,Female,None,"Fever,Body Ache",2021-01-17,2021-01-25,Recovered,False,False,Pfizer,Alpha
+PID10692,10,Female,Asthma,"Breathlessness,Chest Pain",2022-10-28,2022-10-31,Deceased,False,False,Covishield,Omicron BA.2
+PID10693,71,Female,Diabetes,Asymptomatic,2020-09-12,2020-09-26,Recovered,False,False,Unvaccinated,Original
+PID10694,39,Male,Asthma,"Fever,Fatigue,Cough",2022-07-08,2022-07-15,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10695,78,Female,None,"Fever,Body Ache",2021-02-26,2021-03-26,Recovered,False,False,Unvaccinated,Beta
+PID10696,57,Female,None,"Loss of smell,Fever",2021-05-14,2021-05-24,Recovered,False,False,Moderna,Delta
+PID10697,12,Male,CKD,"Fever,Fatigue,Cough",2020-11-27,2020-12-02,Recovered,False,False,Unvaccinated,Original
+PID10698,76,Female,Hypertension,"Cough,Fatigue",2023-03-02,2023-03-08,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10699,71,Male,CKD,"Fever,Fatigue,Cough",2022-12-30,2023-01-09,Recovered,False,False,Moderna,Omicron
+PID10700,13,Male,"Obesity,Heart Disease","Fever,Fatigue,Cough",2021-07-24,2021-07-31,Recovered,False,False,Sputnik V,Delta
+PID10701,25,Female,"Obesity,Heart Disease","Fever,Body Ache",2022-06-27,2022-07-09,Recovered,False,False,Covishield,XBB
+PID10702,44,Female,Heart Disease,"Fever,Body Ache",2021-05-27,2021-06-02,Recovered,False,False,Unvaccinated,Delta
+PID10703,52,Female,Obesity,"Breathlessness,Chest Pain",2021-01-29,2021-02-12,Recovered,False,False,Covishield,Original
+PID10704,28,Male,"Diabetes,Hypertension","Fever,Body Ache",2022-02-09,2022-03-01,Recovered,False,False,Sputnik V,Delta
+PID10705,40,Male,Asthma,Asymptomatic,2021-12-05,2021-12-21,Recovered,False,False,Covishield,Delta
+PID10706,69,Male,"Diabetes,Hypertension","Fever,Cough",2023-04-27,2023-05-22,Recovered,False,False,Covaxin,Omicron BA.2
+PID10707,42,Male,Obesity,Asymptomatic,2022-02-09,2022-02-13,Recovered,False,False,Covishield,Omicron
+PID10708,72,Male,Hypertension,"Fever,Breathlessness",2022-03-12,2022-03-21,Recovered,False,False,Pfizer,Delta
+PID10709,81,Male,"Obesity,Heart Disease","Fever,Cough",2020-09-15,2020-09-21,Recovered,False,False,Unvaccinated,Original
+PID10710,35,Male,Hypertension,"Fever,Body Ache",2023-08-09,2023-08-18,Recovered,False,False,Pfizer,Omicron
+PID10711,33,Male,Diabetes,"Cough,Fatigue",2023-10-24,2023-11-06,Active,False,False,Sputnik V,Omicron
+PID10712,17,Male,None,"Loss of smell,Fever",2022-01-14,2022-01-29,Recovered,False,False,Moderna,Omicron
+PID10713,8,Female,Diabetes,"Loss of smell,Fever",2021-05-16,2021-06-14,Deceased,False,False,Covaxin,Alpha
+PID10714,6,Female,Heart Disease,"Fever,Fatigue,Cough",2023-07-21,2023-08-09,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10715,58,Female,Asthma,"Breathlessness,Chest Pain",2023-07-18,2023-07-24,Recovered,False,False,Covishield,XBB
+PID10716,14,Female,Diabetes,"Fever,Fatigue,Cough",2020-12-14,2020-12-18,Recovered,False,False,Unvaccinated,Original
+PID10717,55,Male,CKD,Asymptomatic,2021-06-20,2021-06-30,Recovered,False,False,Moderna,Alpha
+PID10718,25,Male,Obesity,"Cough,Fatigue",2021-02-27,2021-03-28,Recovered,False,False,Covishield,Beta
+PID10719,48,Female,Hypertension,"Fever,Body Ache",2021-09-29,2021-10-12,Recovered,False,False,Sputnik V,Alpha
+PID10720,51,Female,Obesity,"Cough,Fatigue",2020-06-10,2020-07-09,Recovered,False,False,Unvaccinated,Original
+PID10721,60,Male,Diabetes,"Loss of smell,Fever",2022-06-02,2022-06-18,Recovered,False,False,Sputnik V,XBB
+PID10722,7,Male,Asthma,"Fever,Body Ache",2022-08-05,2022-09-01,Recovered,False,False,Moderna,Omicron
+PID10723,16,Female,Diabetes,"Breathlessness,Chest Pain",2022-06-07,2022-06-29,Recovered,False,False,Covishield,Omicron BA.2
+PID10724,27,Male,CKD,"Loss of smell,Fever",2021-05-24,2021-05-30,Recovered,False,False,Covaxin,Delta
+PID10725,18,Male,Obesity,"Fever,Fatigue,Cough",2022-08-25,2022-09-15,Recovered,False,False,Moderna,Omicron BA.2
+PID10726,10,Female,Obesity,"Breathlessness,Chest Pain",2021-10-30,2021-11-25,Recovered,False,False,Moderna,Alpha
+PID10727,66,Male,Obesity,Asymptomatic,2021-11-16,2021-11-26,Recovered,False,False,Pfizer,Alpha
+PID10728,83,Female,None,"Fever,Cough",2023-10-27,2023-11-10,Active,False,False,Covaxin,XBB
+PID10729,77,Male,None,"Cough,Fatigue",2023-01-18,2023-02-01,Recovered,False,False,Covaxin,Omicron BA.2
+PID10730,26,Female,Heart Disease,"Cough,Fatigue",2021-08-19,2021-09-09,Recovered,False,False,Moderna,Delta
+PID10731,42,Female,Obesity,"Loss of smell,Fever",2020-09-14,2020-10-03,Recovered,False,False,Unvaccinated,Original
+PID10732,18,Male,Hypertension,Asymptomatic,2022-01-20,2022-02-10,Recovered,False,False,Moderna,Omicron
+PID10733,33,Female,CKD,"Fever,Cough",2020-10-22,2020-10-30,Recovered,False,False,Unvaccinated,Original
+PID10734,7,Male,"Diabetes,Hypertension","Fever,Body Ache",2022-06-28,2022-07-20,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10735,61,Male,"Obesity,Heart Disease",Asymptomatic,2020-05-16,2020-06-08,Recovered,False,False,Unvaccinated,Original
+PID10736,89,Male,"Obesity,Heart Disease","Fever,Cough",2022-01-11,2022-02-04,Recovered,False,False,Moderna,Delta
+PID10737,5,Female,Asthma,"Fever,Cough",2021-10-19,2021-11-17,Recovered,False,False,Covishield,Alpha
+PID10738,23,Male,CKD,"Fever,Fatigue,Cough",2023-04-13,2023-05-11,Recovered,False,False,Sputnik V,XBB
+PID10739,75,Female,Diabetes,Asymptomatic,2020-09-22,2020-10-20,Recovered,False,False,Unvaccinated,Original
+PID10740,66,Male,Obesity,"Breathlessness,Chest Pain",2020-04-14,2020-05-04,Recovered,False,False,Unvaccinated,Original
+PID10741,20,Male,Obesity,"Fever,Fatigue,Cough",2023-05-29,2023-06-11,Recovered,False,False,Pfizer,Omicron BA.2
+PID10742,85,Male,None,"Fever,Cough",2023-01-21,2023-02-01,Recovered,False,False,Pfizer,Omicron
+PID10743,81,Male,CKD,Asymptomatic,2023-01-31,2023-02-16,Recovered,False,False,Unvaccinated,Omicron
+PID10744,90,Male,None,"Fever,Breathlessness",2020-08-15,2020-08-20,Recovered,False,False,Unvaccinated,Original
+PID10745,12,Male,Asthma,"Fever,Cough",2022-04-22,2022-05-11,Recovered,False,False,Sputnik V,Omicron
+PID10746,27,Female,Hypertension,"Fever,Cough",2022-09-29,2022-10-15,Recovered,False,False,Pfizer,XBB
+PID10747,86,Female,Heart Disease,"Fever,Body Ache",2022-04-08,2022-04-18,Deceased,False,False,Pfizer,Omicron
+PID10748,62,Male,Hypertension,"Breathlessness,Chest Pain",2021-02-10,2021-02-14,Recovered,False,False,Sputnik V,Alpha
+PID10749,16,Female,CKD,"Fever,Cough",2020-04-23,2020-05-13,Recovered,False,False,Unvaccinated,Original
+PID10750,82,Female,Diabetes,Asymptomatic,2021-02-07,2021-02-28,Recovered,False,False,Pfizer,Original
+PID10751,63,Male,Obesity,"Breathlessness,Chest Pain",2021-04-25,2021-05-04,Recovered,False,False,Covaxin,Delta
+PID10752,64,Male,Diabetes,"Fever,Breathlessness",2022-06-14,2022-06-20,Recovered,False,False,Covishield,Omicron
+PID10753,5,Female,Hypertension,"Cough,Fatigue",2023-08-01,2023-08-09,Recovered,False,False,Covishield,Omicron BA.2
+PID10754,78,Female,Diabetes,"Fever,Fatigue,Cough",2022-12-25,2023-01-14,Recovered,False,False,Covishield,Omicron
+PID10755,80,Male,CKD,"Fever,Fatigue,Cough",2021-12-03,2021-12-14,Recovered,True,False,Unvaccinated,Omicron
+PID10756,17,Female,Obesity,"Fever,Fatigue,Cough",2023-01-24,2023-01-28,Recovered,False,False,Covishield,Omicron
+PID10757,65,Female,"Diabetes,Hypertension","Loss of smell,Fever",2020-10-09,2020-10-24,Recovered,False,False,Unvaccinated,Original
+PID10758,6,Male,Diabetes,Asymptomatic,2021-04-01,2021-04-06,Recovered,False,False,Moderna,Delta
+PID10759,58,Female,Obesity,"Fever,Body Ache",2021-08-31,2021-09-19,Recovered,False,False,Sputnik V,Delta
+PID10760,74,Female,CKD,"Fever,Cough",2021-07-02,2021-08-01,Recovered,False,False,Moderna,Alpha
+PID10761,78,Female,CKD,"Fever,Breathlessness",2022-02-06,2022-02-16,Recovered,False,False,Pfizer,Delta
+PID10762,12,Male,None,"Breathlessness,Chest Pain",2022-09-29,2022-10-17,Recovered,False,False,Pfizer,Omicron
+PID10763,74,Male,Hypertension,Asymptomatic,2020-03-19,2020-04-03,Recovered,False,False,Unvaccinated,Original
+PID10764,46,Female,None,"Breathlessness,Chest Pain",2023-09-24,2023-10-08,Recovered,False,False,Sputnik V,Omicron BA.2
+PID10765,18,Male,"Obesity,Heart Disease","Loss of smell,Fever",2023-03-24,2023-04-10,Recovered,False,False,Sputnik V,Omicron
+PID10766,22,Female,None,"Fever,Fatigue,Cough",2020-08-10,2020-08-31,Recovered,False,False,Unvaccinated,Original
+PID10767,84,Male,None,"Breathlessness,Chest Pain",2021-07-09,2021-07-25,Recovered,False,False,Covishield,Alpha
+PID10768,34,Female,"Obesity,Heart Disease","Fever,Fatigue,Cough",2020-05-23,2020-06-14,Recovered,False,False,Unvaccinated,Original
+PID10769,43,Male,Diabetes,"Fever,Fatigue,Cough",2023-11-02,2023-11-09,Active,False,False,Moderna,XBB
+PID10770,85,Female,Diabetes,"Breathlessness,Chest Pain",2022-02-23,2022-03-12,Recovered,False,False,Sputnik V,Delta
+PID10771,74,Male,None,"Cough,Fatigue",2021-03-16,2021-03-26,Recovered,False,False,Moderna,Original
+PID10772,14,Female,CKD,"Loss of smell,Fever",2021-09-28,2021-10-13,Recovered,False,False,Pfizer,Delta
+PID10773,60,Female,"Obesity,Heart Disease",Asymptomatic,2023-09-13,2023-10-04,Recovered,False,False,Covishield,Omicron
+PID10774,9,Male,CKD,"Loss of smell,Fever",2022-12-21,2023-01-16,Recovered,False,False,Moderna,XBB
+PID10775,35,Female,CKD,"Fever,Body Ache",2023-09-16,2023-10-14,Recovered,False,False,Sputnik V,Omicron
+PID10776,63,Female,"Obesity,Heart Disease","Loss of smell,Fever",2023-09-04,2023-09-17,Deceased,False,False,Covishield,Omicron
+PID10777,52,Female,Obesity,"Loss of smell,Fever",2022-02-14,2022-03-16,Recovered,False,False,Pfizer,Omicron
+PID10778,83,Female,CKD,Asymptomatic,2022-03-07,2022-04-05,Recovered,False,False,Sputnik V,Delta
+PID10779,78,Male,Asthma,"Loss of smell,Fever",2021-04-17,2021-05-07,Recovered,False,False,Covaxin,Alpha
+PID10780,48,Female,Hypertension,"Loss of smell,Fever",2023-03-11,2023-04-07,Recovered,False,False,Covaxin,Omicron
+PID10781,33,Female,Diabetes,Asymptomatic,2022-06-19,2022-07-10,Recovered,False,False,Moderna,XBB
+PID10782,76,Female,"Obesity,Heart Disease","Fever,Fatigue,Cough",2023-01-12,2023-01-18,Recovered,False,False,Sputnik V,Omicron
+PID10783,76,Female,Heart Disease,Asymptomatic,2022-05-15,2022-06-14,Recovered,False,False,Sputnik V,Omicron
+PID10784,44,Male,Diabetes,"Cough,Fatigue",2020-03-30,2020-04-08,Recovered,False,False,Unvaccinated,Original
+PID10785,26,Male,Heart Disease,"Fever,Cough",2023-07-24,2023-08-11,Recovered,False,False,Covaxin,XBB
+PID10786,51,Female,Heart Disease,"Cough,Fatigue",2020-09-07,2020-10-06,Recovered,False,False,Unvaccinated,Original
+PID10787,46,Male,Asthma,Asymptomatic,2020-10-21,2020-11-03,Recovered,False,False,Unvaccinated,Original
+PID10788,72,Male,None,"Fever,Fatigue,Cough",2022-07-22,2022-08-09,Recovered,False,False,Covaxin,Omicron BA.2
+PID10789,87,Male,Asthma,"Loss of smell,Fever",2021-01-15,2021-02-09,Recovered,False,False,Unvaccinated,Original
+PID10790,83,Female,"Obesity,Heart Disease","Fever,Cough",2022-10-06,2022-10-21,Recovered,False,False,Moderna,XBB
+PID10791,21,Male,"Obesity,Heart Disease","Breathlessness,Chest Pain",2023-08-06,2023-09-01,Deceased,False,False,Covishield,Omicron BA.2
+PID10792,22,Male,Asthma,"Fever,Body Ache",2022-06-16,2022-06-24,Recovered,False,False,Pfizer,Omicron BA.2
+PID10793,61,Female,"Obesity,Heart Disease","Breathlessness,Chest Pain",2022-09-22,2022-10-12,Recovered,False,False,Pfizer,Omicron
+PID10794,85,Female,Hypertension,"Loss of smell,Fever",2021-10-08,2021-10-28,Recovered,False,False,Covaxin,Delta
+PID10795,20,Male,Hypertension,"Fever,Cough",2021-11-28,2021-12-20,Recovered,False,False,Covaxin,Delta
+PID10796,24,Male,Obesity,"Fever,Breathlessness",2020-06-03,2020-06-07,Recovered,False,False,Unvaccinated,Original
+PID10797,87,Female,Diabetes,Asymptomatic,2021-07-12,2021-07-19,Recovered,False,False,Covaxin,Alpha
+PID10798,48,Female,"Obesity,Heart Disease","Loss of smell,Fever",2020-03-26,2020-04-08,Recovered,False,False,Unvaccinated,Original
+PID10799,43,Female,CKD,"Cough,Fatigue",2020-10-06,2020-10-18,Recovered,False,False,Unvaccinated,Original
